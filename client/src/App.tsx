@@ -31,7 +31,7 @@ function MarketingRouter() {
         path="/login"
         component={() => (
           <ExternalRedirect
-            href={`${import.meta.env.VITE_APP_BASE_URL || "http://localhost:5174"}/app/login`}
+            href={`${import.meta.env.VITE_APP_BASE_URL || "https://app.nocely.app"}/app/login`}
           />
         )}
       />
@@ -39,7 +39,7 @@ function MarketingRouter() {
         path="/signup"
         component={() => (
           <ExternalRedirect
-            href={`${import.meta.env.VITE_APP_BASE_URL || "http://localhost:5174"}/app/signup`}
+            href={`${import.meta.env.VITE_APP_BASE_URL || "https://app.nocely.app"}/app/signup`}
           />
         )}
       />
