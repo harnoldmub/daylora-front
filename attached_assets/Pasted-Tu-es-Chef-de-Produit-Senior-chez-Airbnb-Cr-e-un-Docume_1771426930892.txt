@@ -1,0 +1,90 @@
+Tu es Chef de Produit Senior chez Airbnb.
+
+Crée un Document de Spécifications Produit (PRD) complet pour le site marketing de Nocely.
+
+Contexte :
+
+Nocely est un SaaS permettant de créer, personnaliser et publier un site de mariage avec backoffice.
+
+Le site marketing (apps/marketing) a pour objectif :
+- Présenter la proposition de valeur
+- Convertir les visiteurs en utilisateurs
+- Expliquer les fonctionnalités
+- Générer des inscriptions
+- Convertir vers Premium
+
+Le produit SaaS est déjà développé.
+Ce PRD concerne uniquement la vitrine marketing.
+
+Inclus obligatoirement :
+
+→ Énoncé du problème :
+   - Complexité organisation mariage
+   - Fragmentation outils (RSVP, cagnotte, invités)
+   - Besoin centralisation digitale
+   - Données marché mariage digital (France + international)
+
+→ Persona marketing :
+   - Couple 25–35 ans
+   - Digital native
+   - Sensible au design
+   - Budget mariage 10K–40K€
+   - Capacité à payer 29–49€
+
+→ Analyse concurrentielle (focus marketing UX) :
+   - WithJoy
+   - Zola
+   - The Knot
+   - Wix Wedding
+   - SayYes
+   Analyse :
+     - Positionnement
+     - Messaging
+     - Conversion flow
+     - Pricing
+     - Où ils échouent visuellement
+
+→ Proposition de valeur (1 phrase forte marketing)
+
+→ Priorisation MoSCoW du site marketing :
+
+Must have (V1)
+Should have
+Could have
+Won’t have
+
+→ 15–20 user stories marketing (conversion, compréhension, réassurance)
+
+→ Métriques de succès marketing :
+   - Taux de conversion landing → signup
+   - CTR CTA principal
+   - Scroll depth
+   - Bounce rate
+   - Conversion Premium
+
+→ Scope MVP marketing :
+   - Hero
+   - Section fonctionnalités
+   - Templates preview
+   - Pricing
+   - FAQ
+   - CTA
+
+→ Scope V2 marketing :
+   - Démo interactive
+   - Témoignages
+   - Comparatif concurrent
+   - SEO blog
+   - Simulateur mariage
+
+→ Description wireframes détaillés :
+   - Hero
+   - Section Problème
+   - Section Solution
+   - Templates preview
+   - Pricing
+   - FAQ
+   - Footer
+   - Flow inscription
+
+Formate comme PRD startup prêt investisseur.
