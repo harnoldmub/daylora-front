@@ -25,7 +25,7 @@ import {
   X,
 } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 const APP_URL = "https://app.nocely.app";
 
@@ -162,9 +162,7 @@ const FAQ_ITEMS = [
 ];
 
 export default function LandingPage() {
-  const [activeScene, setActiveScene] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const sceneRefs = useRef<(HTMLDivElement | null)[]>([]);
   const heroRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -174,25 +172,6 @@ export default function LandingPage() {
 
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Number(entry.target.getAttribute("data-index"));
-            if (!Number.isNaN(index)) setActiveScene(index);
-          }
-        });
-      },
-      { rootMargin: "-30% 0px -30% 0px", threshold: 0.3 }
-    );
-
-    sceneRefs.current.forEach((el) => el && observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
-  const activeImage = useMemo(() => SCENES[activeScene]?.image, [activeScene]);
 
   return (
     <div className="min-h-screen bg-[#F6F1EA] text-[#2b2320] selection:bg-primary/20 overflow-x-hidden">
@@ -533,14 +512,14 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section id="cinema" className="py-24 md:py-32 px-6">
+      <section id="cinema" className="py-24 md:py-40 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
             variants={stagger}
-            className="text-center space-y-5 mb-16"
+            className="text-center space-y-5 mb-20 md:mb-28"
           >
             <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black tracking-[0.2em] uppercase text-primary border border-primary/20">
               <Camera className="h-3.5 w-3.5" />
@@ -552,74 +531,79 @@ export default function LandingPage() {
               <span className="text-gradient">est une scène</span>
             </motion.h2>
             <motion.p variants={fadeUp} className="text-lg text-[#7A6B5E] max-w-2xl mx-auto">
-              Découvrez le produit comme un mini-film. Faites défiler pour explorer chaque fonctionnalité en détail.
+              Découvrez le produit comme un mini-film. Chaque fonctionnalité est présentée dans son décor.
             </motion.p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-14 items-start">
-            <div className="sticky top-28 space-y-6 hidden lg:block">
-              <div className="rounded-[2rem] overflow-hidden shadow-2xl border border-[#E9DFD2] bg-white relative group">
-                <motion.img
-                  key={activeImage}
-                  src={activeImage}
-                  alt="Aperçu Nocely"
-                  className="w-full h-[520px] object-cover transition-all duration-700 group-hover:scale-105"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                />
-                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-
-                <div className="absolute bottom-6 left-6 right-6 z-10 flex items-center justify-between text-white">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30">
-                      {SCENES[activeScene]?.icon}
-                    </div>
-                    <span className="text-sm font-semibold uppercase tracking-widest">{SCENES[activeScene]?.kicker}</span>
-                  </div>
-                  <div className="flex gap-1.5">
-                    {SCENES.map((_, i) => (
-                      <div key={i} className={`h-1 rounded-full transition-all duration-300 ${activeScene === i ? "w-6 bg-white" : "w-2 bg-white/30"}`} />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              {SCENES.map((scene, index) => (
+          <div className="space-y-20 md:space-y-32">
+            {SCENES.map((scene, index) => {
+              const isEven = index % 2 === 0;
+              return (
                 <motion.div
                   key={scene.title}
-                  data-index={index}
-                  ref={(el) => (sceneRefs.current[index] = el)}
-                  className={`p-8 md:p-10 rounded-[2rem] border transition-all duration-500 relative overflow-hidden group/card ${
-                    activeScene === index
-                      ? "bg-white shadow-[0_22px_70px_-15px_rgba(200,169,106,0.18)] border-primary/20 scale-[1.02]"
-                      : "bg-white/40 border-[#E9DFD2] opacity-60 hover:opacity-100"
-                  }`}
                   initial="hidden"
                   whileInView="show"
-                  viewport={{ once: true, amount: 0.3 }}
-                  variants={fadeUp}
+                  viewport={{ once: true, amount: 0.2 }}
+                  variants={stagger}
+                  className={`grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center ${!isEven ? "lg:direction-rtl" : ""}`}
                 >
-                  <div className={`absolute top-0 left-0 w-1.5 h-full bg-primary transition-transform duration-500 rounded-r-full ${activeScene === index ? "scale-y-100" : "scale-y-0"}`} />
+                  <motion.div
+                    variants={{
+                      hidden: { opacity: 0, x: isEven ? -50 : 50 },
+                      show: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+                    }}
+                    className={`relative group ${!isEven ? "lg:order-2" : ""}`}
+                  >
+                    <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border border-[#E9DFD2] bg-white">
+                      <div className="relative overflow-hidden">
+                        <img
+                          src={scene.image}
+                          alt={scene.title}
+                          className="w-full h-[320px] md:h-[420px] object-cover transition-transform ease-out group-hover:scale-105"
+                          style={{ transitionDuration: "1.2s" }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                      </div>
+                      <div className="absolute bottom-5 left-5 right-5 z-10 flex items-center justify-between">
+                        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/15 backdrop-blur-xl border border-white/20">
+                          <span className="text-white">{scene.icon}</span>
+                          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white">{scene.kicker}</span>
+                        </div>
+                        <div className="px-3 py-1.5 rounded-full bg-white/15 backdrop-blur-xl border border-white/20 text-[10px] font-bold text-white/80">
+                          {String(index + 1).padStart(2, "0")} / {String(SCENES.length).padStart(2, "0")}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
 
-                  <div className="lg:hidden mb-4 rounded-2xl overflow-hidden">
-                    <img src={scene.image} alt={scene.title} className="w-full h-48 object-cover" />
-                  </div>
-
-                  <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-primary">
-                    <span className={`p-2.5 rounded-xl transition-all duration-300 ${activeScene === index ? "bg-primary text-white shadow-lg" : "bg-primary/5 text-primary border border-primary/10"}`}>
-                      {scene.icon}
-                    </span>
-                    <span className="opacity-80">{scene.kicker}</span>
-                  </div>
-
-                  <h3 className="text-2xl md:text-3xl font-serif font-bold mt-5 leading-tight">{scene.title}</h3>
-                  <p className="text-[#7A6B5E] mt-3 max-w-xl text-base leading-relaxed">{scene.desc}</p>
+                  <motion.div
+                    variants={{
+                      hidden: { opacity: 0, x: isEven ? 50 : -50 },
+                      show: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut", delay: 0.15 } },
+                    }}
+                    className={`space-y-6 ${!isEven ? "lg:order-1 lg:text-right" : ""}`}
+                  >
+                    <div className={`flex items-center gap-3 ${!isEven ? "lg:justify-end" : ""}`}>
+                      <span className="p-3 rounded-2xl bg-primary/10 text-primary border border-primary/10">
+                        {scene.icon}
+                      </span>
+                      <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary/70">{scene.kicker}</span>
+                    </div>
+                    <h3 className="text-3xl md:text-4xl font-serif font-bold leading-tight">{scene.title}</h3>
+                    <p className="text-[#7A6B5E] text-lg leading-relaxed max-w-lg">{scene.desc}</p>
+                    <div className={`pt-2 ${!isEven ? "lg:flex lg:justify-end" : ""}`}>
+                      <a href={`${APP_URL}/app/signup`}>
+                        <Button variant="ghost" className="group/btn text-primary font-bold hover:text-[#2b2320] px-0 hover:bg-transparent">
+                          Découvrir
+                          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                        </Button>
+                      </a>
+                    </div>
+                  </motion.div>
                 </motion.div>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
