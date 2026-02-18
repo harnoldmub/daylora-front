@@ -215,12 +215,12 @@ export default function LandingPage() {
           </div>
 
           <div className="flex items-center gap-3 md:gap-6">
-            <a href={`${APP_URL}/login`}>
+            <a href={`${APP_URL}/login`} target="_blank" rel="noopener noreferrer">
               <Button variant="ghost" className="text-xs font-bold uppercase tracking-widest text-[#7A6B5E] hover:text-[#2b2320] transition-colors hidden md:inline-flex">
                 Connexion
               </Button>
             </a>
-            <a href={`${APP_URL}/signup`}>
+            <a href={`${APP_URL}/signup`} target="_blank" rel="noopener noreferrer">
               <Button className="rounded-full px-5 md:px-8 h-10 md:h-12 bg-[#2b2320] text-white hover:bg-black transition-all shadow-xl shadow-black/10 hover:-translate-y-0.5 border-none text-sm md:text-base">
                 Créer mon site
               </Button>
@@ -272,7 +272,7 @@ export default function LandingPage() {
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <a href={`${APP_URL}/signup`}>
+              <a href={`${APP_URL}/signup`} target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="rounded-full px-10 md:px-14 h-14 md:h-16 text-lg md:text-xl bg-primary hover:bg-primary/90 group border-none shadow-[0_15px_40px_rgba(200,169,106,0.5)] transition-all hover:-translate-y-1 w-full sm:w-auto">
                   Commencer gratuitement
                   <ArrowRight className="ml-3 h-5 w-5 md:h-6 md:w-6 group-hover:translate-x-1 transition-transform" />
@@ -593,7 +593,7 @@ export default function LandingPage() {
                     <h3 className="text-3xl md:text-4xl font-serif font-bold leading-tight">{scene.title}</h3>
                     <p className="text-[#7A6B5E] text-lg leading-relaxed max-w-lg">{scene.desc}</p>
                     <div className={`pt-2 ${!isEven ? "lg:flex lg:justify-end" : ""}`}>
-                      <a href={`${APP_URL}/signup`}>
+                      <a href={`${APP_URL}/signup`} target="_blank" rel="noopener noreferrer">
                         <Button variant="ghost" className="group/btn text-primary font-bold hover:text-[#2b2320] px-0 hover:bg-transparent">
                           Découvrir
                           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
@@ -779,7 +779,7 @@ export default function LandingPage() {
                   ))}
                 </ul>
               </div>
-              <a href={`${APP_URL}/signup`} className="block">
+              <a href={`${APP_URL}/signup`} target="_blank" rel="noopener noreferrer" className="block">
                 <Button className="w-full rounded-full h-14 bg-white text-[#2b2320] font-bold hover:bg-[#F3EBE1] border-2 border-[#E6DCCF] text-base transition-all hover:border-primary/40">
                   Démarrer gratuitement
                 </Button>
@@ -826,7 +826,7 @@ export default function LandingPage() {
                   ))}
                 </ul>
               </div>
-              <a href={`${APP_URL}/signup`} className="block relative z-10">
+              <a href={`${APP_URL}/signup`} target="_blank" rel="noopener noreferrer" className="block relative z-10">
                 <Button className="w-full rounded-full h-14 bg-primary text-white hover:bg-primary/90 font-bold border-none text-base shadow-[0_10px_30px_rgba(200,169,106,0.3)] transition-all hover:shadow-[0_15px_40px_rgba(200,169,106,0.5)]">
                   Choisir Premium
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -912,7 +912,7 @@ export default function LandingPage() {
               Rejoignez des milliers de couples qui ont choisi Nocely pour créer une expérience de mariage inoubliable.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <a href={`${APP_URL}/signup`}>
+              <a href={`${APP_URL}/signup`} target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="rounded-full px-12 md:px-16 h-16 text-xl bg-primary hover:bg-primary/90 border-none shadow-[0_15px_40px_rgba(200,169,106,0.5)] transition-all hover:-translate-y-1 group w-full sm:w-auto">
                   Commencer maintenant
                   <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
