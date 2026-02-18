@@ -2,118 +2,178 @@ import { Button } from "@/components/ui/button";
 import {
   Heart,
   Sparkles,
-  Calendar,
   Gift,
   CheckCircle2,
   ArrowRight,
   Users,
   MessageCircle,
   Layout,
-  MousePointerClick,
   QrCode,
   Play,
   ShieldCheck,
   Wand2,
   Crown,
   PartyPopper,
-  Layers,
   Rocket,
+  Star,
+  Globe,
+  Zap,
+  Camera,
+  ChevronDown,
+  Quote,
+  Check,
+  X,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-const APP_BASE_URL = import.meta.env.VITE_APP_BASE_URL || "http://localhost:5174";
+const APP_URL = "https://app.nocely.app";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 18 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.92 },
+  show: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const stagger = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.12 } },
 };
 
 const SCENES = [
   {
     kicker: "Création express",
-    title: "Créez votre site en quelques minutes",
-    desc: "Un wizard guidé qui génère un site complet dès la fin de l’onboarding.",
+    title: "Votre site en 3 minutes",
+    desc: "Un wizard guidé vous accompagne étape par étape. Choisissez votre template, personnalisez les couleurs et publiez instantanément.",
     image: "/cinematic/scene_creation_express_v2_png_1770982391605.png",
     icon: <Wand2 className="h-5 w-5" />,
   },
   {
     kicker: "RSVP intelligent",
-    title: "Gérez vos invités facilement",
-    desc: "Tableaux, filtres, confirmations et exports pour un suivi clair en temps réel.",
+    title: "Gérez vos invités sans effort",
+    desc: "Suivez les confirmations en temps réel. Filtres, exports, régimes alimentaires — tout est centralisé dans votre tableau de bord.",
     image: "/cinematic/scene_rsvp_intelligent_v2_png_1770982414436.png",
     icon: <Users className="h-5 w-5" />,
   },
   {
     kicker: "Invitations",
-    title: "Invitations personnalisées & QR code",
-    desc: "PDF élégants, QR code sécurisé et invitations mobiles prêtes à partager.",
+    title: "Invitations numériques & QR code",
+    desc: "Générez des PDF élégants avec QR code unique pour chaque invité. Partagez par WhatsApp, email ou imprimez‑les.",
     image: "/cinematic/scene_invitation_mobile_png_1770982438404.png",
     icon: <QrCode className="h-5 w-5" />,
   },
   {
-    kicker: "Paiements",
-    title: "Cagnotte sécurisée",
-    desc: "Stripe intégré, messages des invités et montants en direct.",
+    kicker: "Cagnotte",
+    title: "Cagnotte sécurisée via Stripe",
+    desc: "Vos invités contribuent en toute sécurité. Messages personnalisés, montants en direct et notifications instantanées.",
     image: "/cinematic/scene_payments_secure_png_1770982456771.png",
     icon: <Gift className="h-5 w-5" />,
   },
   {
     kicker: "Live",
-    title: "Contributions live & animations",
-    desc: "Notifications en temps réel, confettis et messages qui apparaissent comme une scène.",
+    title: "Expérience live pendant le mariage",
+    desc: "Confettis, notifications en direct, messages des invités sur grand écran. Transformez votre réception en spectacle interactif.",
     image: "/cinematic/scene_live_experience_v2_png_1770982504994.png",
     icon: <PartyPopper className="h-5 w-5" />,
   },
   {
-    kicker: "Cadeaux",
-    title: "Liste de cadeaux moderne",
-    desc: "Catalogue élégant, réservations et suivi clair dans l’admin.",
+    kicker: "Liste cadeaux",
+    title: "Un catalogue moderne et élégant",
+    desc: "Proposez une sélection de cadeaux avec réservation, suivi et gestion simplifiée dans votre espace admin.",
     image: "/cinematic/scene_gift_registry_v2_png_1770982539304.png",
     icon: <Gift className="h-5 w-5" />,
   },
   {
     kicker: "Design",
-    title: "Trois templates élégants",
-    desc: "Chaque template est personnalisable et harmonisé sur toutes les pages publiques.",
+    title: "Templates créés par des designers",
+    desc: "Trois thèmes raffinés, entièrement personnalisables. Chaque détail est pensé pour sublimer votre histoire.",
     image: "/cinematic/scene_templates_design_v2_png_1770982570312.png",
     icon: <Layout className="h-5 w-5" />,
   },
   {
     kicker: "Publication",
-    title: "Publiez en un clic",
-    desc: "Votre site est prêt : lien public, lien admin et prévisualisation immédiate.",
+    title: "Publiez en un seul clic",
+    desc: "Votre site est en ligne avec un lien personnalisé. Partagez-le immédiatement avec vos proches.",
     image: "/cinematic/scene_publication_success_v2_png_1770982589944.png",
     icon: <Rocket className="h-5 w-5" />,
   },
 ];
 
-const JOURNEY_STEPS = [
+const TESTIMONIALS = [
   {
-    title: "Création du compte",
-    desc: "Email, mot de passe, vérification rapide. Simple et immédiat.",
+    name: "Sophie & Marc",
+    location: "Paris, France",
+    quote: "Nocely a transformé notre mariage. Nos invités étaient bluffés par la qualité du site. La cagnotte en ligne a simplifié tout le processus.",
+    image: "/images/testimonial-1.jpg",
+    rating: 5,
   },
   {
-    title: "Wizard rapide",
-    desc: "4–5 écrans maximum avec progression visible et données par défaut.",
+    name: "Amélie & James",
+    location: "Lyon, France",
+    quote: "Le live pendant la soirée était magique ! Les messages des invités s'affichaient en direct avec des confettis. Un moment inoubliable.",
+    image: "/images/testimonial-2.jpg",
+    rating: 5,
   },
   {
-    title: "Modules",
-    desc: "Activez la cagnotte, la liste cadeaux, le live ou les blagues en un clic.",
+    name: "Fatou & Olivier",
+    location: "Bordeaux, France",
+    quote: "Créer notre site a pris 5 minutes. Le résultat est digne d'un studio professionnel. Nos invités ont confirmé via le RSVP en un instant.",
+    image: "/images/testimonial-3.jpg",
+    rating: 5,
+  },
+];
+
+const STATS = [
+  { value: "2 500+", label: "couples heureux" },
+  { value: "98%", label: "de satisfaction" },
+  { value: "3 min", label: "pour créer votre site" },
+  { value: "150k+", label: "invités gérés" },
+];
+
+const FAQ_ITEMS = [
+  {
+    q: "Combien de temps faut-il pour créer mon site ?",
+    a: "En moyenne 3 minutes. Notre wizard guidé vous pose quelques questions et génère automatiquement un site complet, prêt à publier.",
   },
   {
-    title: "Offre",
-    desc: "Choisissez la version gratuite ou Premium, sans pression.",
+    q: "Mes invités ont-ils besoin de créer un compte ?",
+    a: "Non, jamais. Votre site est entièrement public et accessible sans inscription. Vos invités peuvent confirmer leur présence en un clic.",
   },
   {
-    title: "Site prêt",
-    desc: "Lien public, lien admin et email automatique envoyé.",
+    q: "Comment fonctionne la cagnotte ?",
+    a: "La cagnotte est sécurisée par Stripe, le leader mondial du paiement en ligne. Chaque contribution est accompagnée d'un message et les montants sont visibles en temps réel dans votre espace admin.",
+  },
+  {
+    q: "Puis-je modifier le design après la création ?",
+    a: "Absolument. Couleurs, typographies, images, textes — tout est modifiable à tout moment depuis votre backoffice. Vous pouvez même changer de template.",
+  },
+  {
+    q: "Le site est-il disponible en français et en anglais ?",
+    a: "Oui, Nocely est pensé pour les mariages internationaux. Votre site peut s'afficher en français, en anglais ou dans les deux langues.",
+  },
+  {
+    q: "Puis-je exporter la liste de mes invités ?",
+    a: "Oui, un export complet (CSV) est disponible dans votre backoffice. Noms, emails, statuts RSVP, régimes alimentaires — tout est inclus.",
   },
 ];
 
 export default function LandingPage() {
   const [activeScene, setActiveScene] = useState(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const sceneRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -135,32 +195,54 @@ export default function LandingPage() {
   const activeImage = useMemo(() => SCENES[activeScene]?.image, [activeScene]);
 
   return (
-    <div className="min-h-screen bg-[#F6F1EA] text-[#2b2320] selection:bg-primary/20">
-      <nav className="fixed top-0 w-full z-50 px-6 py-4">
-        <div className="max-w-7xl mx-auto rounded-full px-6 py-3 flex items-center justify-between bg-white/70 backdrop-blur border border-[#E9DFD2]">
-          <div className="flex items-center gap-3 group cursor-pointer">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary to-[#8C7A6B] rounded-2xl flex items-center justify-center shadow-[0_8px_30px_rgba(200,169,106,0.5)] transition-all group-hover:scale-110 group-hover:rotate-3">
-              <Heart className="h-7 w-7 text-white fill-white" />
+    <div className="min-h-screen bg-[#F6F1EA] text-[#2b2320] selection:bg-primary/20 overflow-x-hidden">
+      <nav className="fixed top-0 w-full z-50 px-4 md:px-6 py-3">
+        <div className="max-w-7xl mx-auto rounded-full px-5 md:px-8 py-3 flex items-center justify-between bg-white/80 backdrop-blur-xl border border-[#E9DFD2]/80 shadow-[0_4px_30px_rgba(0,0,0,0.06)]">
+          <a href="/" className="flex items-center gap-3 group cursor-pointer">
+            <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-primary to-[#8C7A6B] rounded-2xl flex items-center justify-center shadow-[0_8px_30px_rgba(200,169,106,0.4)] transition-all group-hover:scale-110 group-hover:rotate-3">
+              <Heart className="h-5 w-5 md:h-7 md:w-7 text-white fill-white" />
             </div>
             <div className="flex flex-col -space-y-1">
-              <span className="text-2xl font-serif font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-[#2b2320] via-primary to-[#7A6B5E]">Nocely</span>
-              <span className="text-[8px] font-black uppercase tracking-[0.4em] text-primary/60 ml-0.5">Wedding platform</span>
+              <span className="text-xl md:text-2xl font-serif font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-[#2b2320] via-primary to-[#7A6B5E]">
+                Nocely
+              </span>
+              <span className="text-[7px] md:text-[8px] font-black uppercase tracking-[0.4em] text-primary/60 ml-0.5">
+                Wedding platform
+              </span>
             </div>
-          </div>
+          </a>
 
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-[#7A6B5E]">
-            <a href="#cinema" className="hover:text-primary transition-colors">Expérience</a>
-            <a href="#journey" className="hover:text-primary transition-colors">Parcours</a>
-            <a href="#pricing" className="hover:text-primary transition-colors">Tarifs</a>
-            <a href="#faq" className="hover:text-primary transition-colors">FAQ</a>
-          </div>
-
-          <div className="flex items-center gap-6">
-            <a href={`${APP_BASE_URL}/app/login`} title="Connexion">
-              <Button variant="ghost" className="text-xs font-bold uppercase tracking-widest text-[#7A6B5E] hover:text-[#2b2320] transition-colors">Connexion</Button>
+          <div className="hidden lg:flex items-center gap-8 text-sm font-medium text-[#7A6B5E]">
+            <a href="#features" className="hover:text-primary transition-colors relative group">
+              Fonctionnalités
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full rounded-full" />
             </a>
-            <a href={`${APP_BASE_URL}/app/signup`} title="Créer mon site">
-              <Button className="rounded-full px-8 h-12 bg-[#2b2320] text-white hover:bg-black transition-all shadow-xl shadow-black/10 hover:-translate-y-0.5 border-none">
+            <a href="#cinema" className="hover:text-primary transition-colors relative group">
+              Expérience
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full rounded-full" />
+            </a>
+            <a href="#testimonials" className="hover:text-primary transition-colors relative group">
+              Témoignages
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full rounded-full" />
+            </a>
+            <a href="#pricing" className="hover:text-primary transition-colors relative group">
+              Tarifs
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full rounded-full" />
+            </a>
+            <a href="#faq" className="hover:text-primary transition-colors relative group">
+              FAQ
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full rounded-full" />
+            </a>
+          </div>
+
+          <div className="flex items-center gap-3 md:gap-6">
+            <a href={`${APP_URL}/app/login`}>
+              <Button variant="ghost" className="text-xs font-bold uppercase tracking-widest text-[#7A6B5E] hover:text-[#2b2320] transition-colors hidden md:inline-flex">
+                Connexion
+              </Button>
+            </a>
+            <a href={`${APP_URL}/app/signup`}>
+              <Button className="rounded-full px-5 md:px-8 h-10 md:h-12 bg-[#2b2320] text-white hover:bg-black transition-all shadow-xl shadow-black/10 hover:-translate-y-0.5 border-none text-sm md:text-base">
                 Créer mon site
               </Button>
             </a>
@@ -168,163 +250,190 @@ export default function LandingPage() {
         </div>
       </nav>
 
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
-        <div className="absolute inset-0">
-          <video
+      <section ref={heroRef} className="relative min-h-[100vh] flex items-center justify-center overflow-hidden">
+        <motion.div className="absolute inset-0" style={{ scale: heroScale }}>
+          <img
+            src="/images/wedding-hero.jpg"
+            alt="Wedding"
             className="w-full h-full object-cover"
-            autoPlay
-            loop
-            muted
-            playsInline
-            poster="/cinematic/hero_poster.png"
-          >
-            <source src="https://videos.pexels.com/video-files/3015488/3015488-uhd_3840_2160_30fps.mp4" type="video/mp4" />
-          </video>
-          {/* Dark overlay for better text contrast */}
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#F6F1EA]" />
-          <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-[#F6F1EA] via-[#F6F1EA]/80 to-transparent" />
-        </div>
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-[#F6F1EA]" />
+          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#F6F1EA] to-transparent" />
+        </motion.div>
 
         <motion.div
-          initial="hidden"
-          animate="show"
-          variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.15 } } }}
-          className="relative z-10 max-w-6xl mx-auto px-6 text-center space-y-8"
+          style={{ opacity: heroOpacity }}
+          className="relative z-10 max-w-5xl mx-auto px-6 text-center space-y-8 pt-24"
         >
-          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md text-xs font-bold tracking-[0.2em] uppercase text-white border border-white/20 shadow-xl">
-            <Sparkles className="h-3.5 w-3.5 text-primary" />
-            L'excellence du mariage
-          </motion.div>
+          <motion.div
+            initial="hidden"
+            animate="show"
+            variants={stagger}
+            className="space-y-8"
+          >
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md text-xs font-bold tracking-[0.2em] uppercase text-white border border-white/20 shadow-2xl">
+              <Sparkles className="h-3.5 w-3.5 text-primary" />
+              La plateforme mariage n°1 en France
+            </motion.div>
 
-          <div className="space-y-4">
             <motion.h1
               variants={fadeUp}
-              className="text-7xl md:text-[10rem] font-serif font-extrabold leading-[0.85] tracking-tighter text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+              className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-serif font-extrabold leading-[0.85] tracking-tighter text-white drop-shadow-[0_10px_40px_rgba(0,0,0,0.4)]"
             >
-              Nocely
+              Votre mariage
+              <br />
+              <span className="text-gradient">mérite le meilleur</span>
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className="text-2xl md:text-4xl text-white/95 max-w-4xl mx-auto leading-tight font-serif italic drop-shadow-lg"
+              className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed font-medium drop-shadow-md"
             >
-              La nouvelle génération de sites de mariage
+              Créez un site de mariage élégant, gérez vos invités et recevez des contributions — le tout en quelques minutes.
             </motion.p>
-          </div>
 
-          <motion.div
-            variants={fadeUp}
-            className="flex flex-col gap-4 py-4"
-          >
-            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed font-medium drop-shadow-md">
-              Créez une expérience mémorable pour vos invités.
-            </p>
-            <p className="text-sm md:text-base text-white/70 max-w-xl mx-auto leading-relaxed tracking-wider uppercase font-semibold">
-              Beautiful weddings, effortlessly online.
-            </p>
-          </motion.div>
-
-          <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-6 justify-center pt-4">
-            <a href={`${APP_BASE_URL}/app/signup`} title="Créer mon site">
-              <Button size="lg" className="rounded-full px-12 h-16 text-xl bg-primary hover:bg-primary/90 group border-none shadow-[0_15px_35px_rgba(200,169,106,0.4)] transition-all hover:-translate-y-1">
-                Commencer
-                <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </a>
-            <Button asChild size="lg" variant="outline" className="rounded-full px-12 h-16 text-xl border-white/20 bg-white/5 backdrop-blur-md text-white hover:bg-white/20 shadow-xl transition-all hover:-translate-y-1">
-              <a href="#cinema">
-                <Play className="mr-3 h-5 w-5 fill-white" />
-                Voir la démo
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <a href={`${APP_URL}/app/signup`}>
+                <Button size="lg" className="rounded-full px-10 md:px-14 h-14 md:h-16 text-lg md:text-xl bg-primary hover:bg-primary/90 group border-none shadow-[0_15px_40px_rgba(200,169,106,0.5)] transition-all hover:-translate-y-1 w-full sm:w-auto">
+                  Commencer gratuitement
+                  <ArrowRight className="ml-3 h-5 w-5 md:h-6 md:w-6 group-hover:translate-x-1 transition-transform" />
+                </Button>
               </a>
-            </Button>
-          </motion.div>
+              <Button asChild size="lg" variant="outline" className="rounded-full px-10 md:px-14 h-14 md:h-16 text-lg md:text-xl border-white/20 bg-white/5 backdrop-blur-md text-white hover:bg-white/20 shadow-xl transition-all hover:-translate-y-1">
+                <a href="#cinema">
+                  <Play className="mr-3 h-5 w-5 fill-white" />
+                  Découvrir
+                </a>
+              </Button>
+            </motion.div>
 
-          <motion.div variants={fadeUp} className="flex items-center justify-center gap-6 pt-2 text-white/70 text-sm">
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="h-4 w-4" />
-              Paiements sécurisés
-            </div>
-            <div className="flex items-center gap-2">
-              <MousePointerClick className="h-4 w-4" />
-              Site prêt en 3 minutes
-            </div>
-            <div className="flex items-center gap-2">
-              <MessageCircle className="h-4 w-4" />
-              Live en temps réel
-            </div>
+            <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-4 md:gap-8 pt-2 text-white/70 text-xs md:text-sm">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="h-4 w-4 text-primary" />
+                Paiements sécurisés
+              </div>
+              <div className="flex items-center gap-2">
+                <Zap className="h-4 w-4 text-primary" />
+                Site prêt en 3 min
+              </div>
+              <div className="flex items-center gap-2">
+                <Globe className="h-4 w-4 text-primary" />
+                FR / EN
+              </div>
+              <div className="flex items-center gap-2">
+                <Heart className="h-4 w-4 text-primary" />
+                100% gratuit pour démarrer
+              </div>
+            </motion.div>
           </motion.div>
         </motion.div>
+
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ChevronDown className="h-6 w-6 text-[#7A6B5E]/60" />
+          </motion.div>
+        </div>
       </section>
 
-      <section id="cinema" className="py-28 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-14 items-start">
-          <div className="sticky top-28 space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 text-xs font-semibold tracking-wider uppercase text-primary border border-[#E9DFD2]">
+      <section className="py-16 md:py-20 px-6 bg-white/50 border-y border-[#E9DFD2]/50">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={stagger}
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12"
+          >
+            {STATS.map((stat) => (
+              <motion.div key={stat.label} variants={fadeUp} className="text-center space-y-2">
+                <div className="text-3xl md:text-5xl font-serif font-bold text-gradient">{stat.value}</div>
+                <div className="text-sm text-[#7A6B5E] font-medium">{stat.label}</div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      <section id="features" className="py-24 md:py-32 px-6">
+        <div className="max-w-6xl mx-auto space-y-20">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="text-center space-y-5"
+          >
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black tracking-[0.2em] uppercase text-primary border border-primary/20">
               <Sparkles className="h-3.5 w-3.5" />
-              Expérience cinématique
-            </div>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold">Chaque fonctionnalité est une scène.</h2>
-            <p className="text-[#7A6B5E]">Faites défiler pour voir le produit comme un mini‑film : animations, visuels immersifs et transitions élégantes.</p>
-            <div className="rounded-[2rem] overflow-hidden shadow-2xl border border-[#E9DFD2] bg-white relative group">
-              <motion.img
-                key={activeImage}
-                src={activeImage}
-                alt="Aperçu Nocely"
-                className="w-full h-[520px] object-cover transition-all duration-700 group-hover:scale-105"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-              />
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
-              <div className="absolute inset-0 pointer-events-none border-[12px] border-white/10 rounded-[2rem]" />
+              Tout-en-un
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="text-4xl md:text-6xl font-serif font-bold leading-tight">
+              Tout ce dont vous avez besoin,
+              <br className="hidden md:block" />
+              <span className="text-gradient">réuni en un seul endroit</span>
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-lg text-[#7A6B5E] max-w-2xl mx-auto">
+              Fini les dizaines d'outils. Nocely centralise la création de votre site, la gestion de vos invités, la cagnotte et bien plus.
+            </motion.p>
+          </motion.div>
 
-              <div className="absolute bottom-8 left-8 right-8 z-10 flex items-center justify-between text-white drop-shadow-lg">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30">
-                    {SCENES[activeScene]?.icon}
-                  </div>
-                  <span className="text-sm font-semibold uppercase tracking-widest">{SCENES[activeScene]?.kicker}</span>
-                </div>
-                <div className="flex gap-1.5">
-                  {SCENES.map((_, i) => (
-                    <div key={i} className={`h-1 rounded-full transition-all duration-300 ${activeScene === i ? "w-6 bg-white" : "w-2 bg-white/30"}`} />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-8">
-            {SCENES.map((scene, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                icon: <Wand2 className="h-6 w-6" />,
+                title: "Création guidée",
+                desc: "Un wizard intelligent qui crée votre site en quelques questions. Pas besoin de compétences techniques.",
+                color: "from-amber-500/20 to-orange-500/20",
+              },
+              {
+                icon: <Users className="h-6 w-6" />,
+                title: "Gestion RSVP",
+                desc: "Suivi en temps réel des confirmations. Filtres par table, famille, régime alimentaire et export CSV.",
+                color: "from-blue-500/20 to-cyan-500/20",
+              },
+              {
+                icon: <QrCode className="h-6 w-6" />,
+                title: "Invitations QR Code",
+                desc: "PDF élégants générés automatiquement avec QR code unique. Partagez par WhatsApp ou email.",
+                color: "from-violet-500/20 to-purple-500/20",
+              },
+              {
+                icon: <Gift className="h-6 w-6" />,
+                title: "Cagnotte Stripe",
+                desc: "Paiements sécurisés, messages personnalisés et suivi des contributions en direct.",
+                color: "from-emerald-500/20 to-green-500/20",
+              },
+              {
+                icon: <PartyPopper className="h-6 w-6" />,
+                title: "Mode Live",
+                desc: "Confettis, messages sur grand écran, notifications en temps réel pendant votre soirée.",
+                color: "from-pink-500/20 to-rose-500/20",
+              },
+              {
+                icon: <Layout className="h-6 w-6" />,
+                title: "Templates premium",
+                desc: "3 thèmes créés par des designers, personnalisables en profondeur. Couleurs, typos, images.",
+                color: "from-primary/20 to-amber-600/20",
+              },
+            ].map((feature, i) => (
               <motion.div
-                key={scene.title}
-                data-index={index}
-                ref={(el) => (sceneRefs.current[index] = el)}
-                className={`min-h-[50vh] p-10 rounded-[2.5rem] border transition-all duration-500 relative overflow-hidden group/card ${activeScene === index
-                  ? "bg-white shadow-[0_22px_70px_-15px_rgba(200,169,106,0.18)] border-primary/20 scale-[1.02]"
-                  : "bg-white/40 border-[#E9DFD2] opacity-60 hover:opacity-100"
-                  }`}
+                key={feature.title}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.3 }}
                 variants={fadeUp}
+                className="group p-8 rounded-3xl bg-white border border-[#E9DFD2] hover:border-primary/30 transition-all duration-500 hover:shadow-[0_20px_60px_-15px_rgba(200,169,106,0.15)] hover:-translate-y-1 relative overflow-hidden"
               >
-                <div className={`absolute top-0 left-0 w-1.5 h-full bg-primary transition-transform duration-500 ${activeScene === index ? "scale-y-100" : "scale-y-0"}`} />
-
-                <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-primary">
-                  <span className={`p-3 rounded-2xl transition-all duration-300 ${activeScene === index ? "bg-primary text-white shadow-lg" : "bg-primary/5 text-primary border border-primary/10"}`}>
-                    {scene.icon}
-                  </span>
-                  <span className="opacity-80">{scene.kicker}</span>
-                </div>
-
-                <h3 className="text-3xl md:text-4xl font-serif font-bold mt-8 leading-tight">{scene.title}</h3>
-                <p className="text-[#7A6B5E] mt-5 max-w-xl text-lg leading-relaxed">{scene.desc}</p>
-
-                <div className="mt-8 flex items-center gap-2 text-primary font-semibold text-sm group/btn cursor-pointer">
-                  En savoir plus
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl ${feature.color} rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -translate-y-10 translate-x-10`} />
+                <div className="relative z-10 space-y-4">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/20">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-serif font-bold">{feature.title}</h3>
+                  <p className="text-[#7A6B5E] leading-relaxed">{feature.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -332,276 +441,562 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section id="rsvp" className="py-32 px-6 bg-white relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/5 blur-[120px] rounded-full opacity-50" />
+      <section className="py-24 md:py-32 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#2b2320] to-[#3D332B]" />
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary rounded-full blur-[150px]" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary rounded-full blur-[150px]" />
+        </div>
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
-          <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black tracking-[0.2em] uppercase text-primary border border-primary/20">
-              <CheckCircle2 className="h-3.5 w-3.5" />
-              RSVP intelligent
-            </div>
-            <h2 className="text-5xl md:text-7xl font-serif font-bold leading-[1.1]">Confirmez en un éclat.</h2>
-            <p className="text-[#7A6B5E] text-xl leading-relaxed max-w-lg">
-              Une interface fluide pour vos invités, une gestion simplifiée pour vous. Fini les tableaux Excel interminables.
-            </p>
-
-            <div className="space-y-6 pt-4">
-              {[
-                { title: "Statuts en direct", desc: "Suivez qui vient, qui décline et qui hésite en temps réel." },
-                { title: "QR Codes uniques", desc: "Chaque invité reçoit son pass numérique personnalisé." },
-                { title: "Filtres avancés", desc: "Triez par table, par famille ou par régime alimentaire." }
-              ].map((item, i) => (
-                <div key={i} className="flex gap-4">
-                  <div className="mt-1 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30">
-                    <div className="w-2 h-2 rounded-full bg-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#2b2320]">{item.title}</h4>
-                    <p className="text-[#7A6B5E] text-sm">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true }}
-            className="p-1 px-1 rounded-[3rem] bg-gradient-to-br from-[#E9DFD2] via-white to-[#E9DFD2] shadow-2xl"
+            variants={stagger}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
           >
-            <div className="bg-white rounded-[2.9rem] p-10 md:p-14 space-y-10 border border-white shadow-inner">
-              <div className="text-center space-y-2">
-                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/60">Bienvenue</p>
-                <h3 className="text-4xl font-serif font-bold tracking-tight">Marie & Thomas</h3>
-                <p className="text-[#7A6B5E] italic">21 Juin 2026</p>
+            <motion.div variants={fadeUp} className="space-y-8">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-[10px] font-black tracking-[0.2em] uppercase text-primary border border-white/10">
+                <CheckCircle2 className="h-3.5 w-3.5" />
+                RSVP intelligent
               </div>
+              <h2 className="text-4xl md:text-6xl font-serif font-bold text-white leading-tight">
+                Vos invités confirment
+                <br />
+                <span className="text-primary">en un instant</span>
+              </h2>
+              <p className="text-white/70 text-lg leading-relaxed max-w-lg">
+                Fini les relances par téléphone et les tableaux Excel. Vos invités confirment directement depuis votre site, avec leurs préférences alimentaires et le nombre de personnes.
+              </p>
 
-              <div className="space-y-6">
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-[#7A6B5E]">Votre nom</label>
-                  <div className="h-14 w-full rounded-2xl bg-[#F6F1EA] border border-[#E9DFD2] flex items-center px-6 text-[#2b2320] font-medium opacity-60">
-                    Famille Lawson
+              <div className="space-y-5 pt-4">
+                {[
+                  { title: "Confirmation en 1 clic", desc: "Vos invités répondent en 30 secondes, sans créer de compte." },
+                  { title: "QR Codes personnalisés", desc: "Chaque invité reçoit un pass numérique unique et sécurisé." },
+                  { title: "Tableau de bord en direct", desc: "Suivez les réponses en temps réel avec filtres et exports." },
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4 items-start">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30 flex-shrink-0">
+                      <Check className="w-3 h-3 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white">{item.title}</h4>
+                      <p className="text-white/60 text-sm">{item.desc}</p>
+                    </div>
                   </div>
-                </div>
+                ))}
+              </div>
+            </motion.div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="p-4 rounded-2xl bg-primary text-white text-center font-bold shadow-lg shadow-primary/20 cursor-pointer">
-                    Je serai présent
+            <motion.div variants={scaleIn}>
+              <div className="p-1 rounded-[3rem] bg-gradient-to-br from-primary/30 via-white/10 to-primary/30 shadow-2xl">
+                <div className="bg-white rounded-[2.8rem] p-8 md:p-12 space-y-8">
+                  <div className="text-center space-y-2">
+                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/60">Invitation</p>
+                    <h3 className="text-3xl md:text-4xl font-serif font-bold tracking-tight">Marie & Thomas</h3>
+                    <p className="text-[#7A6B5E] italic">21 Juin 2026 • Château de Versailles</p>
                   </div>
-                  <div className="p-4 rounded-2xl bg-white border border-[#E9DFD2] text-[#7A6B5E] text-center font-bold cursor-pointer hover:bg-[#F6F1EA] transition-colors">
-                    Je ne pourrai pas
-                  </div>
-                </div>
 
-                <div className="p-6 rounded-2xl border-2 border-dashed border-[#E9DFD2] text-center space-y-3 bg-[#F6F1EA]/50">
-                  <Users className="h-6 w-6 mx-auto text-primary/40" />
-                  <p className="text-xs font-medium text-[#7A6B5E]">Nombre de personnes : <span className="text-primary font-bold">4</span></p>
+                  <div className="space-y-5">
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-[#7A6B5E]">Votre nom</label>
+                      <div className="h-14 w-full rounded-2xl bg-[#F6F1EA] border border-[#E9DFD2] flex items-center px-6 text-[#2b2320] font-medium">
+                        Famille Lawson
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="p-4 rounded-2xl bg-primary text-white text-center font-bold shadow-lg shadow-primary/20 cursor-pointer transition-transform hover:scale-[1.02]">
+                        <Check className="h-5 w-5 mx-auto mb-1" />
+                        Présent
+                      </div>
+                      <div className="p-4 rounded-2xl bg-white border-2 border-[#E9DFD2] text-[#7A6B5E] text-center font-bold cursor-pointer hover:bg-[#F6F1EA] transition-all">
+                        <X className="h-5 w-5 mx-auto mb-1" />
+                        Absent
+                      </div>
+                    </div>
+
+                    <div className="p-5 rounded-2xl border-2 border-dashed border-[#E9DFD2] text-center space-y-2 bg-[#F6F1EA]/50">
+                      <Users className="h-5 w-5 mx-auto text-primary/50" />
+                      <p className="text-xs font-medium text-[#7A6B5E]">Nombre de personnes : <span className="text-primary font-bold text-lg">4</span></p>
+                    </div>
+                  </div>
+
+                  <Button className="w-full h-14 rounded-2xl bg-[#2b2320] text-white hover:bg-black text-base font-bold transition-all shadow-xl shadow-black/10">
+                    Confirmer ma présence
+                  </Button>
                 </div>
               </div>
-
-              <Button className="w-full h-16 rounded-2xl bg-[#2b2320] text-white hover:bg-black text-lg font-bold transition-all shadow-xl shadow-black/10">
-                Confirmer ma présence
-              </Button>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      <section id="journey" className="py-28 px-6 bg-gradient-to-b from-transparent via-[#F1E7DB] to-transparent">
-        <div className="max-w-6xl mx-auto space-y-12">
-          <div className="text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold">Le parcours idéal</h2>
-            <p className="text-[#7A6B5E]">Un wizard court, intuitif et rassurant. L’utilisateur ne part jamais dans le vide.</p>
-          </div>
+      <section id="cinema" className="py-24 md:py-32 px-6">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="text-center space-y-5 mb-16"
+          >
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black tracking-[0.2em] uppercase text-primary border border-primary/20">
+              <Camera className="h-3.5 w-3.5" />
+              Visite guidée
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="text-4xl md:text-6xl font-serif font-bold leading-tight">
+              Chaque fonctionnalité
+              <br />
+              <span className="text-gradient">est une scène</span>
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-lg text-[#7A6B5E] max-w-2xl mx-auto">
+              Découvrez le produit comme un mini-film. Faites défiler pour explorer chaque fonctionnalité en détail.
+            </motion.p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-10">
-            <div className="space-y-6">
-              {JOURNEY_STEPS.map((step, index) => (
-                <div key={step.title} className="p-6 rounded-3xl bg-white/80 border border-[#E9DFD2] shadow-sm">
-                  <div className="text-xs uppercase tracking-widest text-primary">Étape {index + 1}</div>
-                  <h3 className="text-2xl font-serif font-bold mt-2">{step.title}</h3>
-                  <p className="text-[#7A6B5E] mt-2">{step.desc}</p>
+          <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-14 items-start">
+            <div className="sticky top-28 space-y-6 hidden lg:block">
+              <div className="rounded-[2rem] overflow-hidden shadow-2xl border border-[#E9DFD2] bg-white relative group">
+                <motion.img
+                  key={activeImage}
+                  src={activeImage}
+                  alt="Aperçu Nocely"
+                  className="w-full h-[520px] object-cover transition-all duration-700 group-hover:scale-105"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                />
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+                <div className="absolute bottom-6 left-6 right-6 z-10 flex items-center justify-between text-white">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30">
+                      {SCENES[activeScene]?.icon}
+                    </div>
+                    <span className="text-sm font-semibold uppercase tracking-widest">{SCENES[activeScene]?.kicker}</span>
+                  </div>
+                  <div className="flex gap-1.5">
+                    {SCENES.map((_, i) => (
+                      <div key={i} className={`h-1 rounded-full transition-all duration-300 ${activeScene === i ? "w-6 bg-white" : "w-2 bg-white/30"}`} />
+                    ))}
+                  </div>
                 </div>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              {SCENES.map((scene, index) => (
+                <motion.div
+                  key={scene.title}
+                  data-index={index}
+                  ref={(el) => (sceneRefs.current[index] = el)}
+                  className={`p-8 md:p-10 rounded-[2rem] border transition-all duration-500 relative overflow-hidden group/card ${
+                    activeScene === index
+                      ? "bg-white shadow-[0_22px_70px_-15px_rgba(200,169,106,0.18)] border-primary/20 scale-[1.02]"
+                      : "bg-white/40 border-[#E9DFD2] opacity-60 hover:opacity-100"
+                  }`}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.3 }}
+                  variants={fadeUp}
+                >
+                  <div className={`absolute top-0 left-0 w-1.5 h-full bg-primary transition-transform duration-500 rounded-r-full ${activeScene === index ? "scale-y-100" : "scale-y-0"}`} />
+
+                  <div className="lg:hidden mb-4 rounded-2xl overflow-hidden">
+                    <img src={scene.image} alt={scene.title} className="w-full h-48 object-cover" />
+                  </div>
+
+                  <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-primary">
+                    <span className={`p-2.5 rounded-xl transition-all duration-300 ${activeScene === index ? "bg-primary text-white shadow-lg" : "bg-primary/5 text-primary border border-primary/10"}`}>
+                      {scene.icon}
+                    </span>
+                    <span className="opacity-80">{scene.kicker}</span>
+                  </div>
+
+                  <h3 className="text-2xl md:text-3xl font-serif font-bold mt-5 leading-tight">{scene.title}</h3>
+                  <p className="text-[#7A6B5E] mt-3 max-w-xl text-base leading-relaxed">{scene.desc}</p>
+                </motion.div>
               ))}
             </div>
-
-            <div className="p-8 rounded-[2.5rem] bg-white/80 border border-[#E9DFD2] shadow-sm space-y-6">
-              <div className="flex items-center justify-between text-sm font-semibold">
-                <span>Wizard rapide</span>
-                <span className="text-primary">5 étapes</span>
-              </div>
-              <div className="h-2 rounded-full bg-[#E9DFD2] overflow-hidden">
-                <div className="h-full w-4/5 bg-primary rounded-full" />
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-[#5D5147]">
-                <div className="flex items-center gap-2">
-                  <Calendar className="h-4 w-4 text-primary" />
-                  Noms + dates
-                </div>
-                <div className="flex items-center gap-2">
-                  <Layout className="h-4 w-4 text-primary" />
-                  Choix du template
-                </div>
-                <div className="flex items-center gap-2">
-                  <Gift className="h-4 w-4 text-primary" />
-                  Modules activables
-                </div>
-                <div className="flex items-center gap-2">
-                  <Crown className="h-4 w-4 text-primary" />
-                  Offre claire
-                </div>
-                <div className="flex items-center gap-2">
-                  <Rocket className="h-4 w-4 text-primary" />
-                  Site prêt
-                </div>
-              </div>
-              <div className="rounded-2xl border border-primary/20 bg-primary/5 p-6">
-                <div className="flex items-center gap-3 text-primary font-semibold">
-                  <PartyPopper className="h-5 w-5" />
-                  Votre site est prêt !
-                </div>
-                <p className="text-sm text-[#6B5B4F] mt-2">Lien public, lien admin et bouton “Publier” inclus.</p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button variant="outline" className="flex-1">Prévisualiser</Button>
-                <Button className="flex-1 bg-primary text-white">Publier</Button>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
-      <section id="pricing" className="py-28 px-6">
-        <div className="max-w-5xl mx-auto space-y-12">
-          <div className="text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold italic">Des formules claires</h2>
-            <p className="text-[#7A6B5E]">Simple, transparent, sans surprise.</p>
-          </div>
+      <section id="testimonials" className="py-24 md:py-32 px-6 bg-white relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px] rounded-full" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-10 rounded-[2.5rem] bg-white/80 border border-[#E9DFD2] space-y-8 flex flex-col justify-between shadow-sm">
-              <div className="space-y-6">
-                <div className="text-primary font-bold tracking-widest uppercase text-xs">Free</div>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-5xl font-bold">0€</span>
+        <div className="max-w-6xl mx-auto relative z-10 space-y-16">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="text-center space-y-5"
+          >
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black tracking-[0.2em] uppercase text-primary border border-primary/20">
+              <Heart className="h-3.5 w-3.5" />
+              Témoignages
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="text-4xl md:text-6xl font-serif font-bold leading-tight">
+              Ils ont dit <span className="text-gradient italic">oui</span> à Nocely
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-lg text-[#7A6B5E] max-w-xl mx-auto">
+              Découvrez pourquoi des centaines de couples nous font confiance pour leur plus beau jour.
+            </motion.p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {TESTIMONIALS.map((t, i) => (
+              <motion.div
+                key={t.name}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={fadeUp}
+                className="group p-8 rounded-3xl bg-[#F6F1EA]/60 border border-[#E9DFD2] hover:bg-white hover:shadow-[0_20px_60px_-15px_rgba(200,169,106,0.12)] transition-all duration-500"
+              >
+                <Quote className="h-8 w-8 text-primary/20 mb-4" />
+                <p className="text-[#5D5147] leading-relaxed mb-6 italic">
+                  "{t.quote}"
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/20">
+                    <img src={t.image} alt={t.name} className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-[#2b2320]">{t.name}</div>
+                    <div className="text-xs text-[#7A6B5E]">{t.location}</div>
+                  </div>
                 </div>
-                <p className="text-[#7A6B5E] text-sm">Pour tester rapidement et publier votre première version.</p>
-                <ul className="space-y-4">
-                  {[
-                    "1 template",
-                    "Jusqu'à 50 invités",
-                    "Cagnotte activée",
-                    "Branding Nocely visible",
-                    "Sans liste cadeaux",
-                    "Sans live contributions avancé",
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm text-[#6B5B4F]">
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
-                      {item}
-                    </li>
+                <div className="flex gap-1 mt-4">
+                  {Array.from({ length: t.rating }).map((_, j) => (
+                    <Star key={j} className="h-4 w-4 text-primary fill-primary" />
                   ))}
-                </ul>
-                <a href={`${APP_BASE_URL}/app/signup`} className="w-full">
-                  <Button className="w-full rounded-full h-12 bg-white text-primary font-bold hover:bg-[#F3EBE1] border border-[#E6DCCF]">
-                    Démarrer gratuitement
-                  </Button>
-                </a>
-              </div>
-            </div>
-
-            <div className="p-10 rounded-[2.5rem] bg-primary relative overflow-hidden space-y-8 flex flex-col justify-between shadow-[0_20px_60px_-15px_rgba(200,169,106,0.2)] hover:-translate-y-1 transition-transform">
-              <div className="absolute top-4 right-6 px-3 py-1 bg-white/20 rounded-full text-[10px] font-bold uppercase tracking-tighter text-white">Best seller</div>
-              <div className="space-y-6">
-                <div className="text-white/80 font-bold tracking-widest uppercase text-xs">Premium</div>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-5xl font-bold text-white">19€</span>
-                  <span className="text-white/80 text-sm">/mois</span>
                 </div>
-                <p className="text-white/90 text-sm">Best seller. Minimum 2 mois, puis flexible.</p>
-                <ul className="space-y-4">
-                  {[
-                    "2 templates premium",
-                    "Invités illimités",
-                    "Liste cadeaux",
-                    "Live contributions + animations",
-                    "Blagues live",
-                    "Suppression branding Nocely",
-                    "Export complet",
-                    "Emails illimités",
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm text-white">
-                      <CheckCircle2 className="h-4 w-4 text-white" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <a href={`${APP_BASE_URL}/app/signup`} title="Passer au Premium">
-                <Button className="w-full rounded-full h-12 bg-white text-primary hover:bg-white/90 font-bold border-none">
-                  Choisir Premium
-                </Button>
-              </a>
-            </div>
-          </div>
-          <p className="text-center text-sm text-[#8C7A6B]">
-            FR/EN ready. Conçu pour une expérience premium et internationale.
-          </p>
-        </div>
-      </section>
-
-      <section id="faq" className="py-28 px-6">
-        <div className="max-w-4xl mx-auto space-y-12">
-          <h2 className="text-4xl font-serif font-bold text-center">FAQ</h2>
-          <div className="space-y-6">
-            {[
-              { q: "Puis-je modifier mon design après création ? / Can I edit the design later?", a: "Oui, à tout moment. Couleurs, typographie, textes, boutons et images sont éditables." },
-              { q: "Les invités ont-ils besoin d'un compte ? / Do guests need an account?", a: "Non. Le site public est accessible sans connexion." },
-              { q: "Comment fonctionne la cagnotte ? / How does payment work?", a: "Paiement sécurisé et suivi en direct des contributions." },
-              { q: "Puis-je exporter mes invités ? / Can I export my guests?", a: "Oui, export complet disponible dans le backoffice." },
-            ].map((faq, i) => (
-              <div key={i} className="p-8 rounded-3xl bg-white/70 border border-[#E9DFD2] space-y-3">
-                <h4 className="font-serif font-bold text-xl">{faq.q}</h4>
-                <p className="text-[#7A6B5E] text-sm leading-relaxed">{faq.a}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-32 px-6 text-center relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/10 blur-[200px] pointer-events-none" />
-        <div className="max-w-4xl mx-auto space-y-10 relative z-10">
-          <h2 className="text-6xl md:text-7xl font-serif font-bold italic text-gradient leading-tight">Votre site est prêt en 3 minutes</h2>
-          <p className="text-xl text-[#7A6B5E] max-w-xl mx-auto leading-relaxed">
-            Créez votre projet, choisissez un style et publiez votre site sans effort.
-          </p>
-          <div className="pt-4">
-            <a href={`${APP_BASE_URL}/app/signup`} title="Créer mon site">
-              <Button size="lg" className="rounded-full px-16 h-16 text-xl bg-primary hover:shadow-[0_12px_30px_rgba(196,165,117,0.45)] transition-all border-none">
-                Créer mon site / Create my site
-              </Button>
-            </a>
+      <section className="py-24 md:py-32 px-6 bg-gradient-to-b from-transparent via-[#F1E7DB]/50 to-transparent">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="text-center space-y-5 mb-16"
+          >
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black tracking-[0.2em] uppercase text-primary border border-primary/20">
+              <Layout className="h-3.5 w-3.5" />
+              Templates
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="text-4xl md:text-6xl font-serif font-bold leading-tight">
+              Trois styles,
+              <br />
+              <span className="text-gradient">une seule élégance</span>
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-lg text-[#7A6B5E] max-w-2xl mx-auto">
+              Chaque template est pensé par des designers pour refléter l'unicité de votre histoire. Personnalisez chaque détail.
+            </motion.p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { name: "Classique", desc: "Élégance intemporelle avec sérif et tons chauds", image: "/template_classic_preview_1770241373403.png" },
+              { name: "Moderne", desc: "Lignes épurées et design contemporain", image: "/template_modern_preview_1770241388271.png" },
+              { name: "Minimal", desc: "Simplicité raffinée et espace négatif", image: "/template_minimal_preview_1770241404102.png" },
+            ].map((template, i) => (
+              <motion.div
+                key={template.name}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={fadeUp}
+                className="group cursor-pointer"
+              >
+                <div className="rounded-2xl overflow-hidden border border-[#E9DFD2] bg-white shadow-sm group-hover:shadow-xl group-hover:border-primary/30 transition-all duration-500 group-hover:-translate-y-2">
+                  <div className="h-64 md:h-80 overflow-hidden">
+                    <img
+                      src={template.image}
+                      alt={template.name}
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                    />
+                  </div>
+                  <div className="p-6 text-center">
+                    <h3 className="text-xl font-serif font-bold">{template.name}</h3>
+                    <p className="text-sm text-[#7A6B5E] mt-1">{template.desc}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      <footer className="py-12 border-t border-[#E6DCCF] px-6">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-primary rounded-md flex items-center justify-center">
-              <Heart className="h-4 w-4 text-white fill-white" />
+      <section id="pricing" className="py-24 md:py-32 px-6">
+        <div className="max-w-5xl mx-auto space-y-16">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="text-center space-y-5"
+          >
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black tracking-[0.2em] uppercase text-primary border border-primary/20">
+              <Crown className="h-3.5 w-3.5" />
+              Tarifs
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="text-4xl md:text-6xl font-serif font-bold">
+              Simple, transparent,
+              <br />
+              <span className="text-gradient italic">sans surprise</span>
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-lg text-[#7A6B5E] max-w-xl mx-auto">
+              Commencez gratuitement. Passez au Premium quand vous êtes prêt.
+            </motion.p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              className="p-10 rounded-[2.5rem] bg-white border border-[#E9DFD2] space-y-8 flex flex-col justify-between shadow-sm hover:shadow-lg transition-shadow"
+            >
+              <div className="space-y-6">
+                <div className="text-primary font-bold tracking-widest uppercase text-xs">Gratuit</div>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-6xl font-bold font-serif">0€</span>
+                </div>
+                <p className="text-[#7A6B5E]">Idéal pour découvrir Nocely et créer votre première version.</p>
+                <ul className="space-y-4">
+                  {[
+                    { text: "1 template", included: true },
+                    { text: "Jusqu'à 50 invités", included: true },
+                    { text: "Cagnotte activée", included: true },
+                    { text: "RSVP en ligne", included: true },
+                    { text: "Branding Nocely visible", included: true },
+                    { text: "Liste cadeaux", included: false },
+                    { text: "Live contributions", included: false },
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-sm">
+                      {item.included ? (
+                        <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
+                      ) : (
+                        <X className="h-4 w-4 text-[#C4B8AA] flex-shrink-0" />
+                      )}
+                      <span className={item.included ? "text-[#5D5147]" : "text-[#B6A796]"}>{item.text}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <a href={`${APP_URL}/app/signup`} className="block">
+                <Button className="w-full rounded-full h-14 bg-white text-[#2b2320] font-bold hover:bg-[#F3EBE1] border-2 border-[#E6DCCF] text-base transition-all hover:border-primary/40">
+                  Démarrer gratuitement
+                </Button>
+              </a>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              className="p-10 rounded-[2.5rem] bg-gradient-to-br from-[#2b2320] to-[#3D332B] relative overflow-hidden space-y-8 flex flex-col justify-between shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] hover:-translate-y-1 transition-transform"
+            >
+              <div className="absolute top-4 right-6 px-4 py-1.5 bg-primary rounded-full text-[10px] font-bold uppercase tracking-wider text-white flex items-center gap-1.5">
+                <Star className="h-3 w-3 fill-white" />
+                Best seller
+              </div>
+
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px]" />
+
+              <div className="space-y-6 relative z-10">
+                <div className="text-primary font-bold tracking-widest uppercase text-xs">Premium</div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-6xl font-bold text-white font-serif">19€</span>
+                  <span className="text-white/60 text-sm">/mois</span>
+                </div>
+                <p className="text-white/70">Tout ce qu'il faut pour un mariage inoubliable. Minimum 2 mois.</p>
+                <ul className="space-y-4">
+                  {[
+                    "Tous les templates premium",
+                    "Invités illimités",
+                    "Liste cadeaux complète",
+                    "Live contributions + confettis",
+                    "Blagues live",
+                    "Sans branding Nocely",
+                    "Export complet CSV",
+                    "Emails illimités",
+                    "Support prioritaire",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-sm text-white/90">
+                      <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <a href={`${APP_URL}/app/signup`} className="block relative z-10">
+                <Button className="w-full rounded-full h-14 bg-primary text-white hover:bg-primary/90 font-bold border-none text-base shadow-[0_10px_30px_rgba(200,169,106,0.3)] transition-all hover:shadow-[0_15px_40px_rgba(200,169,106,0.5)]">
+                  Choisir Premium
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </a>
+            </motion.div>
+          </div>
+
+          <p className="text-center text-sm text-[#8C7A6B]">
+            Disponible en français et en anglais. Conçu pour une expérience premium et internationale.
+          </p>
+        </div>
+      </section>
+
+      <section id="faq" className="py-24 md:py-32 px-6 bg-white">
+        <div className="max-w-3xl mx-auto space-y-16">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="text-center space-y-5"
+          >
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black tracking-[0.2em] uppercase text-primary border border-primary/20">
+              <MessageCircle className="h-3.5 w-3.5" />
+              FAQ
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-serif font-bold">
+              Questions fréquentes
+            </motion.h2>
+          </motion.div>
+
+          <div className="space-y-4">
+            {FAQ_ITEMS.map((faq, i) => (
+              <motion.div
+                key={i}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.5 }}
+                variants={fadeUp}
+                className="rounded-2xl border border-[#E9DFD2] bg-[#F6F1EA]/40 overflow-hidden transition-all hover:border-primary/20"
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full px-8 py-6 flex items-center justify-between text-left group"
+                >
+                  <h4 className="font-serif font-bold text-lg pr-4 group-hover:text-primary transition-colors">{faq.q}</h4>
+                  <ChevronDown className={`h-5 w-5 text-[#7A6B5E] flex-shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`} />
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? "max-h-40 pb-6" : "max-h-0"}`}>
+                  <p className="px-8 text-[#7A6B5E] leading-relaxed">{faq.a}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 md:py-32 px-6 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/images/feature-guests.jpg"
+            alt="Wedding celebration"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#2b2320]/90 to-[#2b2320]/80" />
+        </div>
+
+        <div className="max-w-4xl mx-auto text-center relative z-10 space-y-10">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="space-y-8"
+          >
+            <motion.h2 variants={fadeUp} className="text-4xl sm:text-5xl md:text-7xl font-serif font-bold text-white leading-tight">
+              Prêt à créer
+              <br />
+              <span className="text-primary italic">quelque chose de beau ?</span>
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-xl text-white/80 max-w-xl mx-auto leading-relaxed">
+              Rejoignez des milliers de couples qui ont choisi Nocely pour créer une expérience de mariage inoubliable.
+            </motion.p>
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <a href={`${APP_URL}/app/signup`}>
+                <Button size="lg" className="rounded-full px-12 md:px-16 h-16 text-xl bg-primary hover:bg-primary/90 border-none shadow-[0_15px_40px_rgba(200,169,106,0.5)] transition-all hover:-translate-y-1 group w-full sm:w-auto">
+                  Commencer maintenant
+                  <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </a>
+            </motion.div>
+            <motion.div variants={fadeUp} className="flex items-center justify-center gap-4 text-white/50 text-sm">
+              <span>Gratuit pour démarrer</span>
+              <span className="w-1 h-1 rounded-full bg-white/30" />
+              <span>Aucune carte requise</span>
+              <span className="w-1 h-1 rounded-full bg-white/30" />
+              <span>Site prêt en 3 min</span>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      <footer className="py-16 border-t border-[#E6DCCF] px-6 bg-[#F6F1EA]">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div className="space-y-4">
+              <a href="/" className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-gradient-to-br from-primary to-[#8C7A6B] rounded-xl flex items-center justify-center">
+                  <Heart className="h-5 w-5 text-white fill-white" />
+                </div>
+                <span className="text-xl font-serif font-bold tracking-tight">Nocely</span>
+              </a>
+              <p className="text-sm text-[#7A6B5E] leading-relaxed">
+                La nouvelle génération de sites de mariage. Créé avec amour en France.
+              </p>
             </div>
-            <span className="text-xl font-serif font-bold tracking-tight">Nocely</span>
+
+            <div className="space-y-4">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-[#7A6B5E]">Produit</h4>
+              <div className="space-y-3">
+                <a href="#features" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">Fonctionnalités</a>
+                <a href="#pricing" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">Tarifs</a>
+                <a href="#cinema" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">Visite guidée</a>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-[#7A6B5E]">Support</h4>
+              <div className="space-y-3">
+                <a href="#faq" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">FAQ</a>
+                <a href="mailto:contact@nocely.app" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">Contact</a>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-[#7A6B5E]">Légal</h4>
+              <div className="space-y-3">
+                <a href="#" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">Confidentialité</a>
+                <a href="#" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">CGV</a>
+                <a href="#" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">Mentions légales</a>
+              </div>
+            </div>
           </div>
-          <div className="text-[#B6A796] text-xs font-sans">
-            © 2026 Nocely. La nouvelle génération de sites de mariage.
-          </div>
-          <div className="flex gap-8 text-[#8C7A6B] text-xs uppercase tracking-widest font-semibold font-sans">
-            <a href="#" className="hover:text-primary transition-colors">Contact</a>
-            <a href="#" className="hover:text-primary transition-colors">Confidentialité</a>
-            <a href="#" className="hover:text-primary transition-colors">CGV</a>
+
+          <div className="pt-8 border-t border-[#E6DCCF] flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="text-[#B6A796] text-xs">
+              © 2026 Nocely. Tous droits réservés.
+            </div>
+            <div className="flex items-center gap-2 text-[#B6A796] text-xs">
+              <span>Fait avec</span>
+              <Heart className="h-3 w-3 text-primary fill-primary" />
+              <span>en France</span>
+            </div>
           </div>
         </div>
       </footer>
