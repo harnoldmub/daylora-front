@@ -53,53 +53,25 @@ const SCENES = [
     icon: <Wand2 className="h-5 w-5" />,
   },
   {
-    kicker: "RSVP intelligent",
+    kicker: "RSVP & Invitations",
     title: "Gérez vos invités sans effort",
-    desc: "Suivez les confirmations en temps réel. Filtres, exports, régimes alimentaires — tout est centralisé dans votre tableau de bord.",
+    desc: "Confirmations en temps réel, QR codes personnalisés, PDF élégants — partagez par WhatsApp ou email et suivez tout depuis votre tableau de bord.",
     image: "/cinematic/scene_rsvp_intelligent_v2_png_1770982414436.png",
     icon: <Users className="h-5 w-5" />,
   },
   {
-    kicker: "Invitations",
-    title: "Invitations numériques & QR code",
-    desc: "Générez des PDF élégants avec QR code unique pour chaque invité. Partagez par WhatsApp, email ou imprimez‑les.",
-    image: "/cinematic/scene_invitation_mobile_png_1770982438404.png",
-    icon: <QrCode className="h-5 w-5" />,
-  },
-  {
-    kicker: "Cagnotte",
-    title: "Cagnotte sécurisée via Stripe",
-    desc: "Vos invités contribuent en toute sécurité. Messages personnalisés, montants en direct et notifications instantanées.",
+    kicker: "Cagnotte & Cadeaux",
+    title: "Cagnotte sécurisée & liste de cadeaux",
+    desc: "Paiements Stripe sécurisés, messages personnalisés, catalogue de cadeaux avec réservation — tout en un seul endroit.",
     image: "/cinematic/scene_payments_secure_png_1770982456771.png",
     icon: <Gift className="h-5 w-5" />,
   },
   {
-    kicker: "Live",
-    title: "Expérience live pendant le mariage",
-    desc: "Confettis, notifications en direct, messages des invités sur grand écran. Transformez votre réception en spectacle interactif.",
+    kicker: "Live & Design",
+    title: "Expérience live & templates premium",
+    desc: "Confettis, messages en direct sur grand écran pendant la soirée. Trois thèmes raffinés par des designers, entièrement personnalisables.",
     image: "/cinematic/scene_live_experience_v2_png_1770982504994.png",
     icon: <PartyPopper className="h-5 w-5" />,
-  },
-  {
-    kicker: "Liste cadeaux",
-    title: "Un catalogue moderne et élégant",
-    desc: "Proposez une sélection de cadeaux avec réservation, suivi et gestion simplifiée dans votre espace admin.",
-    image: "/cinematic/scene_gift_registry_v2_png_1770982539304.png",
-    icon: <Gift className="h-5 w-5" />,
-  },
-  {
-    kicker: "Design",
-    title: "Templates créés par des designers",
-    desc: "Trois thèmes raffinés, entièrement personnalisables. Chaque détail est pensé pour sublimer votre histoire.",
-    image: "/cinematic/scene_templates_design_v2_png_1770982570312.png",
-    icon: <Layout className="h-5 w-5" />,
-  },
-  {
-    kicker: "Publication",
-    title: "Publiez en un seul clic",
-    desc: "Votre site est en ligne avec un lien personnalisé. Partagez-le immédiatement avec vos proches.",
-    image: "/cinematic/scene_publication_success_v2_png_1770982589944.png",
-    icon: <Rocket className="h-5 w-5" />,
   },
 ];
 
@@ -286,22 +258,22 @@ export default function LandingPage() {
               </Button>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-4 md:gap-8 pt-2 text-white/70 text-xs md:text-sm">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4 text-primary" />
-                Paiements sécurisés
+            <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-3 md:gap-6 pt-2">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/30 backdrop-blur-sm border border-white/10">
+                <ShieldCheck className="h-3.5 w-3.5 text-white" />
+                <span className="text-white text-xs font-medium">Paiements sécurisés</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Zap className="h-4 w-4 text-primary" />
-                Site prêt en 3 min
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/30 backdrop-blur-sm border border-white/10">
+                <Zap className="h-3.5 w-3.5 text-white" />
+                <span className="text-white text-xs font-medium">Site prêt en 3 min</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Globe className="h-4 w-4 text-primary" />
-                FR / EN
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/30 backdrop-blur-sm border border-white/10">
+                <Globe className="h-3.5 w-3.5 text-white" />
+                <span className="text-white text-xs font-medium">FR / EN</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Heart className="h-4 w-4 text-primary" />
-                100% gratuit pour démarrer
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/30 backdrop-blur-sm border border-white/10">
+                <Heart className="h-3.5 w-3.5 text-white" />
+                <span className="text-white text-xs font-medium">100% gratuit pour démarrer</span>
               </div>
             </motion.div>
           </motion.div>
@@ -336,8 +308,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section id="features" className="py-24 md:py-32 px-6">
-        <div className="max-w-6xl mx-auto space-y-20">
+      <section id="features" className="py-16 md:py-24 px-6">
+        <div className="max-w-6xl mx-auto space-y-14">
           <motion.div
             initial="hidden"
             whileInView="show"
@@ -420,106 +392,14 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-24 md:py-32 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#2b2320] to-[#3D332B]" />
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary rounded-full blur-[150px]" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary rounded-full blur-[150px]" />
-        </div>
-
-        <div className="max-w-6xl mx-auto relative z-10">
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            variants={stagger}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
-          >
-            <motion.div variants={fadeUp} className="space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-[10px] font-black tracking-[0.2em] uppercase text-primary border border-white/10">
-                <CheckCircle2 className="h-3.5 w-3.5" />
-                RSVP intelligent
-              </div>
-              <h2 className="text-4xl md:text-6xl font-serif font-bold text-white leading-tight">
-                Vos invités confirment
-                <br />
-                <span className="text-primary">en un instant</span>
-              </h2>
-              <p className="text-white/70 text-lg leading-relaxed max-w-lg">
-                Fini les relances par téléphone et les tableaux Excel. Vos invités confirment directement depuis votre site, avec leurs préférences alimentaires et le nombre de personnes.
-              </p>
-
-              <div className="space-y-5 pt-4">
-                {[
-                  { title: "Confirmation en 1 clic", desc: "Vos invités répondent en 30 secondes, sans créer de compte." },
-                  { title: "QR Codes personnalisés", desc: "Chaque invité reçoit un pass numérique unique et sécurisé." },
-                  { title: "Tableau de bord en direct", desc: "Suivez les réponses en temps réel avec filtres et exports." },
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-4 items-start">
-                    <div className="mt-1 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30 flex-shrink-0">
-                      <Check className="w-3 h-3 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-white">{item.title}</h4>
-                      <p className="text-white/60 text-sm">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div variants={scaleIn}>
-              <div className="p-1 rounded-[3rem] bg-gradient-to-br from-primary/30 via-white/10 to-primary/30 shadow-2xl">
-                <div className="bg-white rounded-[2.8rem] p-8 md:p-12 space-y-8">
-                  <div className="text-center space-y-2">
-                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/60">Invitation</p>
-                    <h3 className="text-3xl md:text-4xl font-serif font-bold tracking-tight">Marie & Thomas</h3>
-                    <p className="text-[#7A6B5E] italic">21 Juin 2026 • Château de Versailles</p>
-                  </div>
-
-                  <div className="space-y-5">
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-[#7A6B5E]">Votre nom</label>
-                      <div className="h-14 w-full rounded-2xl bg-[#F6F1EA] border border-[#E9DFD2] flex items-center px-6 text-[#2b2320] font-medium">
-                        Famille Lawson
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="p-4 rounded-2xl bg-primary text-white text-center font-bold shadow-lg shadow-primary/20 cursor-pointer transition-transform hover:scale-[1.02]">
-                        <Check className="h-5 w-5 mx-auto mb-1" />
-                        Présent
-                      </div>
-                      <div className="p-4 rounded-2xl bg-white border-2 border-[#E9DFD2] text-[#7A6B5E] text-center font-bold cursor-pointer hover:bg-[#F6F1EA] transition-all">
-                        <X className="h-5 w-5 mx-auto mb-1" />
-                        Absent
-                      </div>
-                    </div>
-
-                    <div className="p-5 rounded-2xl border-2 border-dashed border-[#E9DFD2] text-center space-y-2 bg-[#F6F1EA]/50">
-                      <Users className="h-5 w-5 mx-auto text-primary/50" />
-                      <p className="text-xs font-medium text-[#7A6B5E]">Nombre de personnes : <span className="text-primary font-bold text-lg">4</span></p>
-                    </div>
-                  </div>
-
-                  <Button className="w-full h-14 rounded-2xl bg-[#2b2320] text-white hover:bg-black text-base font-bold transition-all shadow-xl shadow-black/10">
-                    Confirmer ma présence
-                  </Button>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section id="cinema" className="py-24 md:py-40 px-6">
+      <section id="cinema" className="py-20 md:py-28 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
             variants={stagger}
-            className="text-center space-y-5 mb-20 md:mb-28"
+            className="text-center space-y-5 mb-14 md:mb-20"
           >
             <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black tracking-[0.2em] uppercase text-primary border border-primary/20">
               <Camera className="h-3.5 w-3.5" />
@@ -535,7 +415,7 @@ export default function LandingPage() {
             </motion.p>
           </motion.div>
 
-          <div className="space-y-20 md:space-y-32">
+          <div className="space-y-14 md:space-y-20">
             {SCENES.map((scene, index) => {
               const isEven = index % 2 === 0;
               return (
@@ -560,7 +440,7 @@ export default function LandingPage() {
                         <img
                           src={scene.image}
                           alt={scene.title}
-                          className="w-full h-[320px] md:h-[420px] object-cover transition-transform ease-out group-hover:scale-105"
+                          className="w-full h-[260px] md:h-[340px] object-cover transition-transform ease-out group-hover:scale-105"
                           style={{ transitionDuration: "1.2s" }}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
