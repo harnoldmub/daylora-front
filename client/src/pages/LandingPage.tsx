@@ -206,7 +206,7 @@ export default function LandingPage() {
             alt="Wedding"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-[#F6F1EA]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-[#F6F1EA]" />
           <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#F6F1EA] to-transparent" />
         </motion.div>
 
