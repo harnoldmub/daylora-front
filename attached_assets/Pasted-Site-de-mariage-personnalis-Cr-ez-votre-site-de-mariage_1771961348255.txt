@@ -1,0 +1,67 @@
+Site de mariage personnalisé
+Créez votre site de mariage en quelques minutes. Choisissez un template, personnalisez les textes, les couleurs et les photos — tout se fait depuis votre espace admin, sans aucune connaissance technique.
+
+3 templates élégants
+Classique, Modern ou Minimal — chaque template offre une direction visuelle unique avec typographies, couleurs et mises en page adaptées à votre style.
+
+Invitations personnalisées
+Chaque invité reçoit un lien unique avec une invitation élégante à son nom : noms des mariés, date, programme, QR code et accès direct au RSVP et à la cagnotte.
+
+Gestion des invités et RSVP
+Ajoutez vos invités, suivez les confirmations en temps réel, exportez la liste en CSV. Filtrez par statut (confirmé, en attente, refusé) et gérez les accompagnants.
+
+Cagnotte en ligne
+Recevez les contributions de vos proches directement via Stripe. Les invités choisissent un montant et laissent un message. Suivez les dons en temps réel depuis votre tableau de bord.
+
+Liste de cadeaux avec réservation
+Proposez une liste de cadeaux que vos invités peuvent réserver en un clic. Chacun voit ce qui est encore disponible et peut indiquer qu'il s'en occupe.
+
+Affichage live des contributions
+Une page live dédiée affiche les contributions en temps réel — idéale pour projeter pendant la soirée. QR code inclus pour que les invités participent sur place.
+
+Blagues live
+Activez le module blagues pour afficher des messages humoristiques en direct pendant votre événement.
+
+Programme et lieux
+Présentez le déroulé de la journée avec un planning visuel, les adresses des lieux et des suggestions d'hébergements à proximité pour vos invités.
+
+Galerie photos
+Partagez vos plus belles photos dans une galerie intégrée au site. Jusqu'à 6 images en formule gratuite, 50 en Premium.
+
+Notre histoire
+Racontez votre histoire de couple avec une section dédiée, mise en forme avec le style de votre template.
+
+Pages personnalisées
+Ajoutez des pages supplémentaires à votre site (infos pratiques, dress code, activités...) avec un éditeur simple.
+
+Emails intégrés
+Envoyez des emails à vos invités directement depuis l'admin — invitations, rappels ou remerciements.
+
+Couleurs et typographie sur mesure
+Palette de couleurs personnalisable, choix de la famille typographique (serif ou sans-serif), style et forme des boutons — votre site reflète exactement votre univers.
+
+Publication et confidentialité
+Publiez votre site quand vous êtes prêt. Tant qu'il n'est pas publié, seul vous pouvez le voir en mode aperçu.
+
+Tableau de bord
+Vue d'ensemble de votre mariage : nombre de RSVP, contributions reçues, taux de confirmation — tout en un coup d'œil.
+
+Code de parrainage
+Chaque utilisateur reçoit un code de parrainage. Partagez-le pour offrir une réduction de 10 € sur le Premium à vos amis.
+
+Formule Gratuite
+
+1 template (Classique)
+30 RSVP maximum
+Cagnotte en ligne
+6 photos en galerie
+Branding Nocely
+Formule Premium — 23,99 €/mois ou 149 €/an
+
+3 templates (Classique, Modern, Minimal)
+RSVP illimités
+Liste de cadeaux avec réservation
+Page live et blagues
+Pages personnalisées
+50 photos en galerie
+Sans branding Nocely

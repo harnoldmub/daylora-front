@@ -14,9 +14,7 @@ import {
   Wand2,
   Crown,
   PartyPopper,
-  Rocket,
   Star,
-  Globe,
   Zap,
   Camera,
   ChevronDown,
@@ -46,30 +44,30 @@ const stagger = {
 
 const SCENES = [
   {
-    kicker: "Création express",
-    title: "Votre site en 3 minutes",
-    desc: "Un wizard guidé vous accompagne étape par étape. Choisissez votre template, personnalisez les couleurs et publiez instantanément.",
+    kicker: "Site de mariage",
+    title: "Votre site en quelques minutes",
+    desc: "Choisissez un template, personnalisez textes, couleurs et photos — tout depuis votre espace admin, sans aucune connaissance technique.",
     image: "/cinematic/scene_creation_express_v2_png_1770982391605.png",
     icon: <Wand2 className="h-5 w-5" />,
   },
   {
-    kicker: "RSVP & Invitations",
-    title: "Gérez vos invités sans effort",
-    desc: "Confirmations en temps réel, QR codes personnalisés, PDF élégants — partagez par WhatsApp ou email et suivez tout depuis votre tableau de bord.",
+    kicker: "Invitations & RSVP",
+    title: "Invitations personnalisées & suivi",
+    desc: "Chaque invité reçoit un lien unique avec invitation à son nom, QR code et accès au RSVP. Suivez les confirmations en temps réel.",
     image: "/cinematic/scene_rsvp_intelligent_v2_png_1770982414436.png",
     icon: <Users className="h-5 w-5" />,
   },
   {
     kicker: "Cagnotte & Cadeaux",
-    title: "Cagnotte sécurisée & liste de cadeaux",
-    desc: "Paiements Stripe sécurisés, messages personnalisés, catalogue de cadeaux avec réservation — tout en un seul endroit.",
+    title: "Contributions et liste de cadeaux",
+    desc: "Cagnotte Stripe sécurisée avec messages personnalisés. Liste de cadeaux avec réservation — vos invités voient ce qui est disponible.",
     image: "/cinematic/scene_payments_secure_png_1770982456771.png",
     icon: <Gift className="h-5 w-5" />,
   },
   {
-    kicker: "Live & Design",
-    title: "Expérience live & templates premium",
-    desc: "Confettis, messages en direct sur grand écran pendant la soirée. Trois thèmes raffinés par des designers, entièrement personnalisables.",
+    kicker: "Live & Animation",
+    title: "Affichage live et blagues",
+    desc: "Projetez les contributions en temps réel pendant la soirée. Activez le module blagues pour des messages humoristiques en direct.",
     image: "/cinematic/scene_live_experience_v2_png_1770982504994.png",
     icon: <PartyPopper className="h-5 w-5" />,
   },
@@ -124,12 +122,12 @@ const FAQ_ITEMS = [
     a: "Absolument. Couleurs, typographies, images, textes — tout est modifiable à tout moment depuis votre backoffice. Vous pouvez même changer de template.",
   },
   {
-    q: "Le site est-il disponible en français et en anglais ?",
-    a: "Oui, Nocely est pensé pour les mariages internationaux. Votre site peut s'afficher en français, en anglais ou dans les deux langues.",
-  },
-  {
     q: "Puis-je exporter la liste de mes invités ?",
     a: "Oui, un export complet (CSV) est disponible dans votre backoffice. Noms, emails, statuts RSVP, régimes alimentaires — tout est inclus.",
+  },
+  {
+    q: "Comment fonctionne le parrainage ?",
+    a: "Chaque utilisateur reçoit un code de parrainage. Partagez-le pour offrir une réduction de 10 € sur le Premium à vos amis.",
   },
 ];
 
@@ -260,20 +258,16 @@ export default function LandingPage() {
 
             <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-3 md:gap-6 pt-2">
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/30 backdrop-blur-sm border border-white/10">
-                <ShieldCheck className="h-3.5 w-3.5 text-white" />
-                <span className="text-white text-xs font-medium">Paiements sécurisés</span>
+                <Heart className="h-3.5 w-3.5 text-white" />
+                <span className="text-white text-xs font-medium">100% gratuit pour démarrer</span>
               </div>
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/30 backdrop-blur-sm border border-white/10">
                 <Zap className="h-3.5 w-3.5 text-white" />
                 <span className="text-white text-xs font-medium">Site prêt en 3 min</span>
               </div>
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/30 backdrop-blur-sm border border-white/10">
-                <Globe className="h-3.5 w-3.5 text-white" />
-                <span className="text-white text-xs font-medium">FR / EN</span>
-              </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/30 backdrop-blur-sm border border-white/10">
-                <Heart className="h-3.5 w-3.5 text-white" />
-                <span className="text-white text-xs font-medium">100% gratuit pour démarrer</span>
+                <ShieldCheck className="h-3.5 w-3.5 text-white" />
+                <span className="text-white text-xs font-medium">Paiements sécurisés</span>
               </div>
             </motion.div>
           </motion.div>
@@ -331,43 +325,47 @@ export default function LandingPage() {
             </motion.p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               {
-                icon: <Wand2 className="h-6 w-6" />,
-                title: "Création guidée",
-                desc: "Un wizard intelligent qui crée votre site en quelques questions. Pas besoin de compétences techniques.",
-                color: "from-amber-500/20 to-orange-500/20",
+                icon: <Wand2 className="h-5 w-5" />,
+                title: "Site personnalisé",
+                desc: "3 templates élégants, couleurs, typos et photos — tout se personnalise sans compétences techniques.",
               },
               {
-                icon: <Users className="h-6 w-6" />,
-                title: "Gestion RSVP",
-                desc: "Suivi en temps réel des confirmations. Filtres par table, famille, régime alimentaire et export CSV.",
-                color: "from-blue-500/20 to-cyan-500/20",
+                icon: <Users className="h-5 w-5" />,
+                title: "RSVP & Invités",
+                desc: "Confirmations en temps réel, filtres par statut, accompagnants et export CSV.",
               },
               {
-                icon: <QrCode className="h-6 w-6" />,
+                icon: <QrCode className="h-5 w-5" />,
                 title: "Invitations QR Code",
-                desc: "PDF élégants générés automatiquement avec QR code unique. Partagez par WhatsApp ou email.",
-                color: "from-violet-500/20 to-purple-500/20",
+                desc: "Chaque invité reçoit un lien unique avec invitation élégante, QR code et accès direct au RSVP.",
               },
               {
-                icon: <Gift className="h-6 w-6" />,
-                title: "Cagnotte Stripe",
-                desc: "Paiements sécurisés, messages personnalisés et suivi des contributions en direct.",
-                color: "from-emerald-500/20 to-green-500/20",
+                icon: <Gift className="h-5 w-5" />,
+                title: "Cagnotte & Cadeaux",
+                desc: "Cagnotte Stripe sécurisée et liste de cadeaux avec réservation en un clic.",
               },
               {
-                icon: <PartyPopper className="h-6 w-6" />,
-                title: "Mode Live",
-                desc: "Confettis, messages sur grand écran, notifications en temps réel pendant votre soirée.",
-                color: "from-pink-500/20 to-rose-500/20",
+                icon: <PartyPopper className="h-5 w-5" />,
+                title: "Live & Blagues",
+                desc: "Contributions en direct sur grand écran et module blagues pour animer votre soirée.",
               },
               {
-                icon: <Layout className="h-6 w-6" />,
-                title: "Templates premium",
-                desc: "3 thèmes créés par des designers, personnalisables en profondeur. Couleurs, typos, images.",
-                color: "from-primary/20 to-amber-600/20",
+                icon: <Layout className="h-5 w-5" />,
+                title: "Programme & Lieux",
+                desc: "Planning visuel, adresses des lieux et suggestions d'hébergements pour vos invités.",
+              },
+              {
+                icon: <Camera className="h-5 w-5" />,
+                title: "Galerie & Histoire",
+                desc: "Partagez vos photos et racontez votre histoire dans des sections dédiées.",
+              },
+              {
+                icon: <MessageCircle className="h-5 w-5" />,
+                title: "Emails & Pages",
+                desc: "Envoyez invitations et rappels depuis l'admin. Ajoutez des pages personnalisées.",
               },
             ].map((feature, i) => (
               <motion.div
@@ -376,15 +374,14 @@ export default function LandingPage() {
                 whileInView="show"
                 viewport={{ once: true, amount: 0.3 }}
                 variants={fadeUp}
-                className="group p-8 rounded-3xl bg-white border border-[#E9DFD2] hover:border-primary/30 transition-all duration-500 hover:shadow-[0_20px_60px_-15px_rgba(200,169,106,0.15)] hover:-translate-y-1 relative overflow-hidden"
+                className="group p-6 rounded-2xl bg-white border border-[#E9DFD2] hover:border-primary/30 transition-all duration-500 hover:shadow-[0_15px_40px_-10px_rgba(200,169,106,0.12)] hover:-translate-y-0.5 relative overflow-hidden"
               >
-                <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl ${feature.color} rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -translate-y-10 translate-x-10`} />
-                <div className="relative z-10 space-y-4">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/20">
+                <div className="relative z-10 space-y-3">
+                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-serif font-bold">{feature.title}</h3>
-                  <p className="text-[#7A6B5E] leading-relaxed">{feature.desc}</p>
+                  <h3 className="text-base font-serif font-bold">{feature.title}</h3>
+                  <p className="text-[#7A6B5E] text-sm leading-relaxed">{feature.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -545,62 +542,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-24 md:py-32 px-6 bg-gradient-to-b from-transparent via-[#F1E7DB]/50 to-transparent">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            variants={stagger}
-            className="text-center space-y-5 mb-16"
-          >
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black tracking-[0.2em] uppercase text-primary border border-primary/20">
-              <Layout className="h-3.5 w-3.5" />
-              Templates
-            </motion.div>
-            <motion.h2 variants={fadeUp} className="text-4xl md:text-6xl font-serif font-bold leading-tight">
-              Trois styles,
-              <br />
-              <span className="text-gradient">une seule élégance</span>
-            </motion.h2>
-            <motion.p variants={fadeUp} className="text-lg text-[#7A6B5E] max-w-2xl mx-auto">
-              Chaque template est pensé par des designers pour refléter l'unicité de votre histoire. Personnalisez chaque détail.
-            </motion.p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { name: "Classique", desc: "Élégance intemporelle avec sérif et tons chauds", image: "/template_classic_preview_1770241373403.png" },
-              { name: "Moderne", desc: "Lignes épurées et design contemporain", image: "/template_modern_preview_1770241388271.png" },
-              { name: "Minimal", desc: "Simplicité raffinée et espace négatif", image: "/template_minimal_preview_1770241404102.png" },
-            ].map((template, i) => (
-              <motion.div
-                key={template.name}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.3 }}
-                variants={fadeUp}
-                className="group cursor-pointer"
-              >
-                <div className="rounded-2xl overflow-hidden border border-[#E9DFD2] bg-white shadow-sm group-hover:shadow-xl group-hover:border-primary/30 transition-all duration-500 group-hover:-translate-y-2">
-                  <div className="h-64 md:h-80 overflow-hidden">
-                    <img
-                      src={template.image}
-                      alt={template.name}
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                    />
-                  </div>
-                  <div className="p-6 text-center">
-                    <h3 className="text-xl font-serif font-bold">{template.name}</h3>
-                    <p className="text-sm text-[#7A6B5E] mt-1">{template.desc}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section id="pricing" className="py-24 md:py-32 px-6">
         <div className="max-w-5xl mx-auto space-y-16">
           <motion.div
@@ -640,13 +581,14 @@ export default function LandingPage() {
                 <p className="text-[#7A6B5E]">Idéal pour découvrir Nocely et créer votre première version.</p>
                 <ul className="space-y-4">
                   {[
-                    { text: "1 template", included: true },
-                    { text: "Jusqu'à 50 invités", included: true },
-                    { text: "Cagnotte activée", included: true },
-                    { text: "RSVP en ligne", included: true },
-                    { text: "Branding Nocely visible", included: true },
+                    { text: "1 template (Classique)", included: true },
+                    { text: "30 RSVP maximum", included: true },
+                    { text: "Cagnotte en ligne", included: true },
+                    { text: "6 photos en galerie", included: true },
+                    { text: "Branding Nocely", included: true },
                     { text: "Liste cadeaux", included: false },
-                    { text: "Live contributions", included: false },
+                    { text: "Page live & blagues", included: false },
+                    { text: "Pages personnalisées", included: false },
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm">
                       {item.included ? (
@@ -683,21 +625,19 @@ export default function LandingPage() {
               <div className="space-y-6 relative z-10">
                 <div className="text-primary font-bold tracking-widest uppercase text-xs">Premium</div>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-6xl font-bold text-white font-serif">19€</span>
+                  <span className="text-6xl font-bold text-white font-serif">23,99€</span>
                   <span className="text-white/60 text-sm">/mois</span>
                 </div>
-                <p className="text-white/70">Tout ce qu'il faut pour un mariage inoubliable. Minimum 2 mois.</p>
+                <p className="text-white/70">ou 149€/an — tout ce qu'il faut pour un mariage inoubliable.</p>
                 <ul className="space-y-4">
                   {[
-                    "Tous les templates premium",
-                    "Invités illimités",
-                    "Liste cadeaux complète",
-                    "Live contributions + confettis",
-                    "Blagues live",
+                    "3 templates (Classique, Modern, Minimal)",
+                    "RSVP illimités",
+                    "Liste de cadeaux avec réservation",
+                    "Page live et blagues",
+                    "Pages personnalisées",
+                    "50 photos en galerie",
                     "Sans branding Nocely",
-                    "Export complet CSV",
-                    "Emails illimités",
-                    "Support prioritaire",
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm text-white/90">
                       <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
@@ -716,7 +656,7 @@ export default function LandingPage() {
           </div>
 
           <p className="text-center text-sm text-[#8C7A6B]">
-            Disponible en français et en anglais. Conçu pour une expérience premium et internationale.
+            Aucune carte requise pour commencer. Passez au Premium quand vous êtes prêt.
           </p>
         </div>
       </section>
