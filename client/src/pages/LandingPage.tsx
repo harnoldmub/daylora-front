@@ -196,7 +196,7 @@ export default function LandingPage() {
             alt="Wedding"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-[#F6F1EA]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#F6F1EA]" />
           <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#F6F1EA] to-transparent" />
         </motion.div>
 
@@ -212,7 +212,7 @@ export default function LandingPage() {
           >
             <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md text-xs font-bold tracking-[0.2em] uppercase text-white border border-white/20 shadow-2xl">
               <Sparkles className="h-3.5 w-3.5 text-primary" />
-              La plateforme mariage n°1 en France
+              La plateforme mariage n°1
             </motion.div>
 
             <motion.h1
@@ -740,7 +740,7 @@ export default function LandingPage() {
                 <img src="/images/logo.png" alt="Nocely" className="h-10 w-auto" />
               </a>
               <p className="text-sm text-[#7A6B5E] leading-relaxed">
-                La nouvelle génération de sites de mariage. Créé avec amour en France.
+                La nouvelle génération de sites de mariage.
               </p>
             </div>
 
@@ -778,7 +778,6 @@ export default function LandingPage() {
             <div className="flex items-center gap-2 text-[#B6A796] text-xs">
               <span>Fait avec</span>
               <Heart className="h-3 w-3 text-primary fill-primary" />
-              <span>en France</span>
             </div>
           </div>
         </div>
