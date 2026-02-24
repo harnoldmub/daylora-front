@@ -45,29 +45,29 @@ const stagger = {
 const SCENES = [
   {
     kicker: "Site de mariage",
-    title: "Votre site en quelques minutes",
-    desc: "Choisissez un template, personnalisez textes, couleurs et photos — tout depuis votre espace admin, sans aucune connaissance technique.",
+    title: "Votre site prêt en quelques minutes",
+    desc: "Choisissez un modèle, changez les textes, les couleurs et les photos — tout se fait simplement, sans rien y connaître en informatique.",
     image: "/cinematic/scene_creation_express_v2_png_1770982391605.png",
     icon: <Wand2 className="h-5 w-5" />,
   },
   {
-    kicker: "Invitations & RSVP",
-    title: "Invitations personnalisées & suivi",
-    desc: "Chaque invité reçoit un lien unique avec invitation à son nom, QR code et accès au RSVP. Suivez les confirmations en temps réel.",
+    kicker: "Invitations & Réponses",
+    title: "Vos invités répondent en un clic",
+    desc: "Chaque invité reçoit son propre lien avec une belle invitation, un QR code et un bouton pour confirmer sa présence.",
     image: "/cinematic/scene_rsvp_intelligent_v2_png_1770982414436.png",
     icon: <Users className="h-5 w-5" />,
   },
   {
     kicker: "Cagnotte & Cadeaux",
-    title: "Contributions et liste de cadeaux",
-    desc: "Cagnotte Stripe sécurisée avec messages personnalisés. Liste de cadeaux avec réservation — vos invités voient ce qui est disponible.",
+    title: "Recevez des contributions et proposez des cadeaux",
+    desc: "Vos proches peuvent vous envoyer de l'argent en toute sécurité ou réserver un cadeau dans votre liste — simple et rapide.",
     image: "/cinematic/scene_payments_secure_png_1770982456771.png",
     icon: <Gift className="h-5 w-5" />,
   },
   {
-    kicker: "Live & Animation",
-    title: "Affichage live et blagues",
-    desc: "Projetez les contributions en temps réel pendant la soirée. Activez le module blagues pour des messages humoristiques en direct.",
+    kicker: "Animation en direct",
+    title: "Animez votre soirée en direct",
+    desc: "Affichez les messages et contributions de vos invités sur grand écran pendant la fête, avec des blagues et des animations.",
     image: "/cinematic/scene_live_experience_v2_png_1770982504994.png",
     icon: <PartyPopper className="h-5 w-5" />,
   },
@@ -107,27 +107,27 @@ const STATS = [
 const FAQ_ITEMS = [
   {
     q: "Combien de temps faut-il pour créer mon site ?",
-    a: "En moyenne 3 minutes. Notre wizard guidé vous pose quelques questions et génère automatiquement un site complet, prêt à publier.",
+    a: "En moyenne 3 minutes. On vous pose quelques questions, et votre site est prêt à être partagé.",
   },
   {
     q: "Mes invités ont-ils besoin de créer un compte ?",
-    a: "Non, jamais. Votre site est entièrement public et accessible sans inscription. Vos invités peuvent confirmer leur présence en un clic.",
+    a: "Non, jamais. Votre site est accessible à tout le monde, sans inscription. Vos invités confirment leur présence en un seul clic.",
   },
   {
     q: "Comment fonctionne la cagnotte ?",
-    a: "La cagnotte est sécurisée par Stripe, le leader mondial du paiement en ligne. Chaque contribution est accompagnée d'un message et les montants sont visibles en temps réel dans votre espace admin.",
+    a: "Les paiements passent par Stripe, le système de paiement le plus utilisé au monde. Chaque don est accompagné d'un message et vous voyez les montants en direct.",
   },
   {
-    q: "Puis-je modifier le design après la création ?",
-    a: "Absolument. Couleurs, typographies, images, textes — tout est modifiable à tout moment depuis votre backoffice. Vous pouvez même changer de template.",
+    q: "Puis-je modifier mon site après la création ?",
+    a: "Bien sûr. Couleurs, polices, images, textes — vous pouvez tout changer à tout moment depuis votre espace. Vous pouvez même changer de modèle.",
   },
   {
-    q: "Puis-je exporter la liste de mes invités ?",
-    a: "Oui, un export complet (CSV) est disponible dans votre backoffice. Noms, emails, statuts RSVP, régimes alimentaires — tout est inclus.",
+    q: "Puis-je récupérer la liste de mes invités ?",
+    a: "Oui, vous pouvez télécharger un fichier avec tous les détails : noms, emails, réponses, régimes alimentaires — tout y est.",
   },
   {
     q: "Comment fonctionne le parrainage ?",
-    a: "Chaque utilisateur reçoit un code de parrainage. Partagez-le pour offrir une réduction de 10 € sur le Premium à vos amis.",
+    a: "Vous recevez un code à partager avec vos amis. Chaque ami qui l'utilise obtient 10 € de réduction sur le Premium.",
   },
 ];
 
@@ -147,18 +147,8 @@ export default function LandingPage() {
     <div className="min-h-screen bg-[#F6F1EA] text-[#2b2320] selection:bg-primary/20 overflow-x-hidden">
       <nav className="fixed top-0 w-full z-50 px-4 md:px-6 py-3">
         <div className="max-w-7xl mx-auto rounded-full px-5 md:px-8 py-3 flex items-center justify-between bg-white/80 backdrop-blur-xl border border-[#E9DFD2]/80 shadow-[0_4px_30px_rgba(0,0,0,0.06)]">
-          <a href="/" className="flex items-center gap-3 group cursor-pointer">
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-primary to-[#8C7A6B] rounded-2xl flex items-center justify-center shadow-[0_8px_30px_rgba(200,169,106,0.4)] transition-all group-hover:scale-110 group-hover:rotate-3">
-              <Heart className="h-5 w-5 md:h-7 md:w-7 text-white fill-white" />
-            </div>
-            <div className="flex flex-col -space-y-1">
-              <span className="text-xl md:text-2xl font-serif font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-[#2b2320] via-primary to-[#7A6B5E]">
-                Nocely
-              </span>
-              <span className="text-[7px] md:text-[8px] font-black uppercase tracking-[0.4em] text-primary/60 ml-0.5">
-                Wedding platform
-              </span>
-            </div>
+          <a href="/" className="flex items-center group cursor-pointer">
+            <img src="/images/logo.png" alt="Nocely" className="h-10 md:h-12 w-auto transition-all group-hover:scale-105" />
           </a>
 
           <div className="hidden lg:flex items-center gap-8 text-sm font-medium text-[#7A6B5E]">
@@ -202,7 +192,7 @@ export default function LandingPage() {
       <section ref={heroRef} className="relative min-h-[100vh] flex items-center justify-center overflow-hidden">
         <motion.div className="absolute inset-0" style={{ scale: heroScale }}>
           <img
-            src="/images/wedding-hero.jpg"
+            src="/images/wedding-hero.png"
             alt="Wedding"
             className="w-full h-full object-cover"
           />
@@ -238,7 +228,7 @@ export default function LandingPage() {
               variants={fadeUp}
               className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed font-medium drop-shadow-md"
             >
-              Créez un site de mariage élégant, gérez vos invités et recevez des contributions — le tout en quelques minutes.
+              Créez votre site de mariage, gérez vos invités et recevez de l'argent — en quelques minutes.
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
@@ -316,12 +306,12 @@ export default function LandingPage() {
               Tout-en-un
             </motion.div>
             <motion.h2 variants={fadeUp} className="text-4xl md:text-6xl font-serif font-bold leading-tight">
-              Tout ce dont vous avez besoin,
+              Tout ce qu'il vous faut,
               <br className="hidden md:block" />
-              <span className="text-gradient">réuni en un seul endroit</span>
+              <span className="text-gradient">au même endroit</span>
             </motion.h2>
             <motion.p variants={fadeUp} className="text-lg text-[#7A6B5E] max-w-2xl mx-auto">
-              Fini les dizaines d'outils. Nocely centralise la création de votre site, la gestion de vos invités, la cagnotte et bien plus.
+              Plus besoin de jongler entre 10 outils. Votre site, vos invités, votre cagnotte — tout est ici.
             </motion.p>
           </motion.div>
 
@@ -329,43 +319,43 @@ export default function LandingPage() {
             {[
               {
                 icon: <Wand2 className="h-5 w-5" />,
-                title: "Site personnalisé",
-                desc: "3 templates élégants, couleurs, typos et photos — tout se personnalise sans compétences techniques.",
+                title: "Site sur mesure",
+                desc: "3 modèles élégants à personnaliser : couleurs, polices, photos — aucune compétence technique nécessaire.",
               },
               {
                 icon: <Users className="h-5 w-5" />,
-                title: "RSVP & Invités",
-                desc: "Confirmations en temps réel, filtres par statut, accompagnants et export CSV.",
+                title: "Réponses & Invités",
+                desc: "Voyez qui vient en temps réel. Filtrez par statut, gérez les accompagnants et téléchargez la liste.",
               },
               {
                 icon: <QrCode className="h-5 w-5" />,
                 title: "Invitations QR Code",
-                desc: "Chaque invité reçoit un lien unique avec invitation élégante, QR code et accès direct au RSVP.",
+                desc: "Chaque invité reçoit son propre lien avec une invitation à son nom et un QR code.",
               },
               {
                 icon: <Gift className="h-5 w-5" />,
                 title: "Cagnotte & Cadeaux",
-                desc: "Cagnotte Stripe sécurisée et liste de cadeaux avec réservation en un clic.",
+                desc: "Recevez de l'argent en toute sécurité et proposez une liste de cadeaux à réserver.",
               },
               {
                 icon: <PartyPopper className="h-5 w-5" />,
-                title: "Live & Blagues",
-                desc: "Contributions en direct sur grand écran et module blagues pour animer votre soirée.",
+                title: "Écran live & Blagues",
+                desc: "Affichez les dons et messages sur grand écran pendant la soirée, avec des blagues en direct.",
               },
               {
                 icon: <Layout className="h-5 w-5" />,
                 title: "Programme & Lieux",
-                desc: "Planning visuel, adresses des lieux et suggestions d'hébergements pour vos invités.",
+                desc: "Montrez le déroulé de la journée, les adresses et les hôtels à proximité.",
               },
               {
                 icon: <Camera className="h-5 w-5" />,
-                title: "Galerie & Histoire",
-                desc: "Partagez vos photos et racontez votre histoire dans des sections dédiées.",
+                title: "Photos & Histoire",
+                desc: "Partagez vos plus belles photos et racontez votre histoire de couple.",
               },
               {
                 icon: <MessageCircle className="h-5 w-5" />,
                 title: "Emails & Pages",
-                desc: "Envoyez invitations et rappels depuis l'admin. Ajoutez des pages personnalisées.",
+                desc: "Envoyez des invitations ou des rappels par email. Ajoutez des pages à votre site.",
               },
             ].map((feature, i) => (
               <motion.div
@@ -403,12 +393,12 @@ export default function LandingPage() {
               Visite guidée
             </motion.div>
             <motion.h2 variants={fadeUp} className="text-4xl md:text-6xl font-serif font-bold leading-tight">
-              Chaque fonctionnalité
+              Comment ça
               <br />
-              <span className="text-gradient">est une scène</span>
+              <span className="text-gradient">fonctionne</span>
             </motion.h2>
             <motion.p variants={fadeUp} className="text-lg text-[#7A6B5E] max-w-2xl mx-auto">
-              Découvrez le produit comme un mini-film. Chaque fonctionnalité est présentée dans son décor.
+              En quelques étapes simples, votre mariage prend vie en ligne.
             </motion.p>
           </motion.div>
 
@@ -469,14 +459,6 @@ export default function LandingPage() {
                     </div>
                     <h3 className="text-3xl md:text-4xl font-serif font-bold leading-tight">{scene.title}</h3>
                     <p className="text-[#7A6B5E] text-lg leading-relaxed max-w-lg">{scene.desc}</p>
-                    <div className={`pt-2 ${!isEven ? "lg:flex lg:justify-end" : ""}`}>
-                      <a href={`${APP_URL}/onboarding`} target="_blank" rel="noopener noreferrer">
-                        <Button variant="ghost" className="group/btn text-primary font-bold hover:text-[#2b2320] px-0 hover:bg-transparent">
-                          Découvrir
-                          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                        </Button>
-                      </a>
-                    </div>
                   </motion.div>
                 </motion.div>
               );
@@ -504,7 +486,7 @@ export default function LandingPage() {
               Ils ont dit <span className="text-gradient italic">oui</span> à Nocely
             </motion.h2>
             <motion.p variants={fadeUp} className="text-lg text-[#7A6B5E] max-w-xl mx-auto">
-              Découvrez pourquoi des centaines de couples nous font confiance pour leur plus beau jour.
+              Des couples comme vous nous font confiance pour leur plus beau jour.
             </motion.p>
           </motion.div>
 
@@ -578,7 +560,7 @@ export default function LandingPage() {
                 <div className="flex items-baseline gap-1">
                   <span className="text-6xl font-bold font-serif">0€</span>
                 </div>
-                <p className="text-[#7A6B5E]">Idéal pour découvrir Nocely et créer votre première version.</p>
+                <p className="text-[#7A6B5E]">Parfait pour essayer Nocely et créer votre premier site.</p>
                 <ul className="space-y-4">
                   {[
                     { text: "1 template (Classique)", included: true },
@@ -628,7 +610,7 @@ export default function LandingPage() {
                   <span className="text-6xl font-bold text-white font-serif">23,99€</span>
                   <span className="text-white/60 text-sm">/mois</span>
                 </div>
-                <p className="text-white/70">ou 149€/an — tout ce qu'il faut pour un mariage inoubliable.</p>
+                <p className="text-white/70">ou 149€/an — tout ce qu'il faut pour un mariage parfait.</p>
                 <ul className="space-y-4">
                   {[
                     "3 templates (Classique, Modern, Minimal)",
@@ -729,7 +711,7 @@ export default function LandingPage() {
               <span className="text-primary italic">quelque chose de beau ?</span>
             </motion.h2>
             <motion.p variants={fadeUp} className="text-xl text-white/80 max-w-xl mx-auto leading-relaxed">
-              Rejoignez des milliers de couples qui ont choisi Nocely pour créer une expérience de mariage inoubliable.
+              Rejoignez les couples qui ont choisi Nocely pour leur plus beau jour.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <a href={`${APP_URL}/onboarding`} target="_blank" rel="noopener noreferrer">
@@ -754,11 +736,8 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div className="space-y-4">
-              <a href="/" className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-primary to-[#8C7A6B] rounded-xl flex items-center justify-center">
-                  <Heart className="h-5 w-5 text-white fill-white" />
-                </div>
-                <span className="text-xl font-serif font-bold tracking-tight">Nocely</span>
+              <a href="/" className="flex items-center">
+                <img src="/images/logo.png" alt="Nocely" className="h-10 w-auto" />
               </a>
               <p className="text-sm text-[#7A6B5E] leading-relaxed">
                 La nouvelle génération de sites de mariage. Créé avec amour en France.
