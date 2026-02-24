@@ -497,7 +497,7 @@
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#9D7E5A] via-[#C4A575] to-[#E3C290];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#C4A575] via-[#D4B98A] to-[#C4A575];
   }
 
   .hover-glow {
