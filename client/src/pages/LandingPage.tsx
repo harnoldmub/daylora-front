@@ -27,6 +27,8 @@ import { useRef, useState } from "react";
 
 const APP_URL = "https://app.nocely.app";
 
+const mobileViewport = { once: true, margin: "0px 0px -50px 0px", amount: 0 as const };
+
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
@@ -278,7 +280,7 @@ export default function LandingPage() {
           <motion.div
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.5 }}
+            viewport={mobileViewport}
             variants={stagger}
             className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12"
           >
@@ -297,7 +299,7 @@ export default function LandingPage() {
           <motion.div
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true }}
+            viewport={mobileViewport}
             variants={stagger}
             className="text-center space-y-5"
           >
@@ -362,7 +364,7 @@ export default function LandingPage() {
                 key={feature.title}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={mobileViewport}
                 variants={fadeUp}
                 className="group p-6 rounded-2xl bg-white border border-[#E9DFD2] hover:border-primary/30 transition-all duration-500 hover:shadow-[0_15px_40px_-10px_rgba(200,169,106,0.12)] hover:-translate-y-0.5 relative overflow-hidden"
               >
@@ -384,7 +386,7 @@ export default function LandingPage() {
           <motion.div
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true }}
+            viewport={mobileViewport}
             variants={stagger}
             className="text-center space-y-5 mb-14 md:mb-20"
           >
@@ -410,7 +412,7 @@ export default function LandingPage() {
                   key={scene.title}
                   initial="hidden"
                   whileInView="show"
-                  viewport={{ once: true, amount: 0.2 }}
+                  viewport={mobileViewport}
                   variants={stagger}
                   className={`grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center ${!isEven ? "lg:direction-rtl" : ""}`}
                 >
@@ -474,7 +476,7 @@ export default function LandingPage() {
           <motion.div
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true }}
+            viewport={mobileViewport}
             variants={stagger}
             className="text-center space-y-5"
           >
@@ -496,7 +498,7 @@ export default function LandingPage() {
                 key={t.name}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={mobileViewport}
                 variants={fadeUp}
                 className="group p-8 rounded-3xl bg-[#F6F1EA]/60 border border-[#E9DFD2] hover:bg-white hover:shadow-[0_20px_60px_-15px_rgba(200,169,106,0.12)] transition-all duration-500"
               >
@@ -529,7 +531,7 @@ export default function LandingPage() {
           <motion.div
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true }}
+            viewport={mobileViewport}
             variants={stagger}
             className="text-center space-y-5"
           >
@@ -551,7 +553,7 @@ export default function LandingPage() {
             <motion.div
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true }}
+              viewport={mobileViewport}
               variants={fadeUp}
               className="p-10 rounded-[2.5rem] bg-white border border-[#E9DFD2] space-y-8 flex flex-col justify-between shadow-sm hover:shadow-lg transition-shadow"
             >
@@ -593,7 +595,7 @@ export default function LandingPage() {
             <motion.div
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true }}
+              viewport={mobileViewport}
               variants={fadeUp}
               className="p-10 rounded-[2.5rem] bg-gradient-to-br from-[#2b2320] to-[#3D332B] relative overflow-hidden space-y-8 flex flex-col justify-between shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] hover:-translate-y-1 transition-transform"
             >
@@ -648,7 +650,7 @@ export default function LandingPage() {
           <motion.div
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true }}
+            viewport={mobileViewport}
             variants={stagger}
             className="text-center space-y-5"
           >
@@ -667,7 +669,7 @@ export default function LandingPage() {
                 key={i}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, amount: 0.5 }}
+                viewport={mobileViewport}
                 variants={fadeUp}
                 className="rounded-2xl border border-[#E9DFD2] bg-[#F6F1EA]/40 overflow-hidden transition-all hover:border-primary/20"
               >
@@ -701,7 +703,7 @@ export default function LandingPage() {
           <motion.div
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true }}
+            viewport={mobileViewport}
             variants={stagger}
             className="space-y-8"
           >
