@@ -25,7 +25,7 @@ import {
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 
-const APP_URL = "https://app.daylora.app";
+const APP_URL = "https://daylora.app";
 
 const mobileViewport = { once: true, margin: "200px 0px 0px 0px", amount: 0 as const };
 

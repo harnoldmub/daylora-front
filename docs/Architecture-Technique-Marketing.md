@@ -475,8 +475,8 @@ daylora.app/#testimonials       → Ancre témoignages
 daylora.app/#pricing            → Ancre tarifs
 daylora.app/#faq                → Ancre FAQ
 
-daylora.app/login               → Redirect → app.daylora.app/app/login
-daylora.app/signup              → Redirect → app.daylora.app/app/signup
+daylora.app/login               → Redirect → daylora.app/app/login
+daylora.app/signup              → Redirect → daylora.app/app/signup
 
 daylora.app/:slug               → Proxy public wedding site (SSR via app backend)
 
@@ -494,7 +494,7 @@ daylora.app/contact             → Page contact
 
 ```typescript
 // lib/cta.ts
-const APP_BASE = "https://app.daylora.app";
+const APP_BASE = "https://daylora.app";
 
 export const CTA = {
   signup: `${APP_BASE}/app/signup`,
@@ -719,8 +719,8 @@ function App() {
 ```tsx
 // Preload critical assets dans index.html
 <link rel="preload" href="/images/wedding-hero.webp" as="image" type="image/webp">
-<link rel="preconnect" href="https://app.daylora.app">
-<link rel="dns-prefetch" href="https://app.daylora.app">
+<link rel="preconnect" href="https://daylora.app">
+<link rel="dns-prefetch" href="https://daylora.app">
 ```
 
 ---
@@ -1027,7 +1027,7 @@ function Hero() {
 
 ```bash
 # .env.production
-VITE_APP_BASE_URL=https://app.daylora.app
+VITE_APP_BASE_URL=https://daylora.app
 VITE_SITE_URL=https://daylora.app
 VITE_POSTHOG_KEY=phc_xxxxxxxxxxxx
 VITE_POSTHOG_HOST=https://eu.posthog.com
@@ -1036,7 +1036,7 @@ VITE_ENV=production
 
 ```bash
 # .env.development
-VITE_APP_BASE_URL=https://app.daylora.app
+VITE_APP_BASE_URL=https://daylora.app
 VITE_SITE_URL=http://localhost:5000
 VITE_ENV=development
 ```
@@ -1069,7 +1069,7 @@ VITE_ENV=development
 
 ### Conversion
 - [ ] CTA visible above the fold
-- [ ] Tous les CTA redirigent vers app.daylora.app
+- [ ] Tous les CTA redirigent vers daylora.app
 - [ ] UTM parameters sur chaque CTA
 - [ ] Analytics events configurés
 - [ ] Scroll depth tracking

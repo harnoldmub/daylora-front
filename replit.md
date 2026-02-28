@@ -38,8 +38,8 @@ Daylora is a French-language event orchestration platform marketing/landing page
 - **Premium**: 23,99€/mois ou 149€/an — 3 templates, RSVP illimités, liste cadeaux, page live & blagues, pages perso, 50 photos, sans branding
 
 ## CTAs
-- All CTA buttons redirect to https://app.daylora.app/onboarding (new tab)
-- Connexion button redirects to https://app.daylora.app/login (new tab)
+- All CTA buttons redirect to https://daylora.app/onboarding (new tab)
+- Connexion button redirects to https://daylora.app/login (new tab)
 - Contact: contact@daylora.co
 
 ## SEO

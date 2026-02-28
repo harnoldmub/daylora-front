@@ -23,7 +23,7 @@ export default function TermsPage() {
           <h2 className="text-2xl font-serif font-bold mt-10 mb-4">1. Objet</h2>
           <p>
             Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre
-            la société Daylora, éditrice de la plateforme accessible à l'adresse <strong>daylora.co</strong> et <strong>app.daylora.app</strong>,
+            la société Daylora, éditrice de la plateforme accessible à l'adresse <strong>daylora.co</strong> et <strong>daylora.app</strong>,
             et tout utilisateur souhaitant utiliser ses services.
           </p>
 

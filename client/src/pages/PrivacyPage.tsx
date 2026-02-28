@@ -22,7 +22,7 @@ export default function PrivacyPage() {
 
           <h2 className="text-2xl font-serif font-bold mt-10 mb-4">1. Responsable du traitement</h2>
           <p>
-            La société Daylora, éditrice du site <strong>daylora.co</strong> et de l'application <strong>app.daylora.app</strong>,
+            La société Daylora, éditrice du site <strong>daylora.co</strong> et de l'application <strong>daylora.app</strong>,
             est responsable du traitement des données personnelles collectées sur ses plateformes.
           </p>
           <p>Contact : <a href="mailto:contact@daylora.co" className="text-primary hover:underline">contact@daylora.co</a></p>

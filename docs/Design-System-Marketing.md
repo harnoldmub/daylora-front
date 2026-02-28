@@ -272,7 +272,7 @@ export function Hero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-            <a href="https://app.daylora.app/app/signup?utm_source=marketing&utm_content=hero_primary">
+            <a href="https://daylora.app/app/signup?utm_source=marketing&utm_content=hero_primary">
               <button className="group flex items-center gap-3 px-8 h-14
                 bg-ink text-white rounded-full font-semibold text-base
                 shadow-hero hover:bg-black hover:-translate-y-0.5
@@ -673,7 +673,7 @@ export function PricingCard({ name, price, period, description, features, cta, c
       { text: 'Analytics avancés', included: false },
     ]}
     cta="Commencer gratuitement"
-    ctaHref="https://app.daylora.app/app/signup?utm_content=pricing_free"
+    ctaHref="https://daylora.app/app/signup?utm_content=pricing_free"
   />
   <PricingCard
     name="Premium"
@@ -693,7 +693,7 @@ export function PricingCard({ name, price, period, description, features, cta, c
       { text: 'Analytics avancés', included: true },
     ]}
     cta="Passer Premium"
-    ctaHref="https://app.daylora.app/app/signup?utm_content=pricing_premium"
+    ctaHref="https://daylora.app/app/signup?utm_content=pricing_premium"
   />
 </div>
 ```
@@ -901,11 +901,11 @@ export function Navbar() {
 
         {/* Actions */}
         <div className="flex items-center gap-3 md:gap-6">
-          <a href="https://app.daylora.app/app/login"
+          <a href="https://daylora.app/app/login"
             className="hidden md:inline-flex text-overline text-muted hover:text-ink transition-colors">
             Connexion
           </a>
-          <a href="https://app.daylora.app/app/signup?utm_content=nav_button">
+          <a href="https://daylora.app/app/signup?utm_content=nav_button">
             <button className="rounded-full px-5 md:px-8 h-10 md:h-12
               bg-ink text-white hover:bg-black
               transition-all shadow-card hover:shadow-elevated

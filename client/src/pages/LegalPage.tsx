@@ -22,7 +22,7 @@ export default function LegalPage() {
 
           <h2 className="text-2xl font-serif font-bold mt-10 mb-4">1. Éditeur du site</h2>
           <p>
-            Le site <strong>daylora.co</strong> et l'application <strong>app.daylora.app</strong> sont édités par :
+            Le site <strong>daylora.co</strong> et l'application <strong>daylora.app</strong> sont édités par :
           </p>
           <ul>
             <li><strong>Raison sociale</strong> : Daylora</li>

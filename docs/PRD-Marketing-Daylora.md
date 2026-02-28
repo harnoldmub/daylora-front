@@ -18,7 +18,7 @@ Ce PRD concerne exclusivement le **site marketing** (daylora.app) dont la missio
 - Éduquer sur les fonctionnalités clés
 - Générer des upgrades vers le plan Premium
 
-L'application SaaS vit sur app.daylora.app. Le site marketing est le point d'entrée unique du funnel d'acquisition.
+L'application SaaS vit sur daylora.app. Le site marketing est le point d'entrée unique du funnel d'acquisition.
 
 ---
 
@@ -88,7 +88,7 @@ Le marché français est **sous-pénétré** par rapport aux US/UK, avec aucun a
 2. **Évaluation** (< 60s) → Hero + templates preview
 3. **Réassurance** → Témoignages + FAQ
 4. **Décision** → Pricing clair + CTA "Commencer gratuitement"
-5. **Activation** → Redirect vers app.daylora.app/signup
+5. **Activation** → Redirect vers daylora.app/signup
 6. **Upgrade** → Après création du site, in-app
 
 ---
@@ -156,7 +156,7 @@ Déclinaisons marketing :
 | M7 | Footer avec liens légaux | Conformité RGPD |
 | M8 | Navigation fixe avec CTA | Conversion permanente |
 | M9 | Responsive design (mobile-first) | 70%+ du trafic est mobile |
-| M10 | Redirect vers app.daylora.app | Funnel d'activation |
+| M10 | Redirect vers daylora.app | Funnel d'activation |
 | M11 | Section témoignages | Social proof |
 | M12 | Bandeau stats (social proof) | Crédibilité |
 
@@ -184,7 +184,7 @@ Déclinaisons marketing :
 
 | ID | Fonctionnalité | Raison |
 |---|---|---|
-| W1 | Création de compte sur le site marketing | Vit sur app.daylora.app |
+| W1 | Création de compte sur le site marketing | Vit sur daylora.app |
 | W2 | Backoffice ou dashboard | Produit SaaS séparé |
 | W3 | Paiement / checkout | Géré in-app |
 | W4 | Gestion des invités | Fonctionnalité produit |
@@ -200,7 +200,7 @@ Déclinaisons marketing :
 | US1 | En tant que visiteur, je veux comprendre ce que fait Daylora en < 5 secondes pour décider si je continue. | Hero + sous-titre lisibles, message clair. |
 | US2 | En tant que visiteur, je veux voir un CTA visible sans scroller pour pouvoir m'inscrire immédiatement. | CTA "Commencer gratuitement" above the fold. |
 | US3 | En tant que visiteur, je veux voir le pricing avant de m'inscrire pour savoir si c'est dans mon budget. | Section pricing accessible en 1 clic depuis la nav. |
-| US4 | En tant que visiteur, je veux cliquer sur "Commencer" et être redirigé vers l'app pour créer mon compte. | Redirect vers app.daylora.app/app/signup. |
+| US4 | En tant que visiteur, je veux cliquer sur "Commencer" et être redirigé vers l'app pour créer mon compte. | Redirect vers daylora.app/app/signup. |
 | US5 | En tant que visiteur mobile, je veux une expérience fluide pour ne pas quitter la page. | Responsive, touch-friendly, < 3s de chargement. |
 
 ### Compréhension
@@ -229,7 +229,7 @@ Déclinaisons marketing :
 |---|---|---|
 | US16 | En tant que visiteur, je veux une expérience visuelle premium pour associer Daylora à la qualité. | Animations fluides, design soigné, images HD. |
 | US17 | En tant que visiteur, je veux pouvoir naviguer facilement entre les sections. | Nav fixe avec ancres smooth scroll. |
-| US18 | En tant que visiteur, je veux accéder à mon compte si j'en ai déjà un. | Bouton "Connexion" dans la nav → app.daylora.app/app/login. |
+| US18 | En tant que visiteur, je veux accéder à mon compte si j'en ai déjà un. | Bouton "Connexion" dans la nav → daylora.app/app/login. |
 | US19 | En tant que visiteur, je veux voir les templates disponibles pour me projeter. | Section templates avec aperçu visuel. |
 | US20 | En tant que visiteur sur Google, je veux que la page soit bien référencée pour trouver Daylora facilement. | Meta tags, title, description optimisés. |
 
@@ -659,14 +659,14 @@ Déclinaisons marketing :
            ▼
   ┌─────────────────────────┐
   │  Redirect 302           │
-  │  → app.daylora.app       │
+  │  → daylora.app       │
   │    /app/signup           │
   └────────┬────────────────┘
            │
            ▼
   ┌─────────────────────────┐
   │  Formulaire inscription │
-  │  (sur app.daylora.app)   │
+  │  (sur daylora.app)   │
   └────────┬────────────────┘
            │
            ▼
@@ -690,7 +690,7 @@ Déclinaisons marketing :
 |---|---|
 | **Stack** | React 18 + TypeScript + Vite 5 + Tailwind CSS v3 |
 | **Hébergement** | Déploiement statique (dist/public/) |
-| **Domaine** | daylora.app (marketing) / app.daylora.app (SaaS) |
+| **Domaine** | daylora.app (marketing) / daylora.app (SaaS) |
 | **Performance** | LCP < 2.5s, FID < 100ms, CLS < 0.1 |
 | **SEO** | Meta tags, Open Graph, sitemap.xml, robots.txt |
 | **Accessibilité** | WCAG 2.1 AA minimum |
