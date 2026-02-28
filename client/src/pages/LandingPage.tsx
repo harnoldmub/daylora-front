@@ -766,9 +766,9 @@ export default function LandingPage() {
             <div className="space-y-4">
               <h4 className="text-xs font-bold uppercase tracking-widest text-[#7A6B5E]">Légal</h4>
               <div className="space-y-3">
-                <a href="#" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">Confidentialité</a>
-                <a href="#" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">CGV</a>
-                <a href="#" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">Mentions légales</a>
+                <a href="/confidentialite" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">Confidentialité</a>
+                <a href="/cgv" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">CGV</a>
+                <a href="/mentions-legales" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">Mentions légales</a>
               </div>
             </div>
           </div>

@@ -6,6 +6,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 
 // Pages
 import LandingPage from "@/pages/LandingPage";
+import PrivacyPage from "@/pages/PrivacyPage";
+import TermsPage from "@/pages/TermsPage";
+import LegalPage from "@/pages/LegalPage";
 import PublicProxyPage from "@/pages/PublicProxyPage";
 import NotFound from "@/pages/not-found";
 
@@ -19,6 +22,11 @@ function MarketingRouter() {
     <Switch>
       {/* Landing Page */}
       <Route path="/" component={LandingPage} />
+
+      {/* Legal Pages */}
+      <Route path="/confidentialite" component={PrivacyPage} />
+      <Route path="/cgv" component={TermsPage} />
+      <Route path="/mentions-legales" component={LegalPage} />
 
       {/* Public wedding site (proxy to app) */}
       <Route path="/:slug/:page*">
