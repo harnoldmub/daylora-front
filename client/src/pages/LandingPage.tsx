@@ -240,15 +240,16 @@ export default function LandingPage() {
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <a href={`${APP_URL}/onboarding`} target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="rounded-full px-10 md:px-14 h-14 md:h-16 text-lg md:text-xl bg-primary hover:bg-primary/90 group border-none shadow-[0_15px_40px_rgba(200,169,106,0.5)] transition-all hover:-translate-y-1 w-full sm:w-auto">
-                  Accéder à Daylora Premium — 149€
+                  Commencer gratuitement
                   <ArrowRight className="ml-3 h-5 w-5 md:h-6 md:w-6 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </a>
-              <a href={`${APP_URL}/onboarding`} target="_blank" rel="noopener noreferrer">
-                <Button size="lg" variant="outline" className="rounded-full px-10 md:px-14 h-14 md:h-16 text-lg md:text-xl border-white/20 bg-white/5 backdrop-blur-md text-white hover:bg-white/20 shadow-xl transition-all hover:-translate-y-1 w-full sm:w-auto">
-                  Commencer gratuitement
-                </Button>
-              </a>
+              <Button asChild size="lg" variant="outline" className="rounded-full px-10 md:px-14 h-14 md:h-16 text-lg md:text-xl border-white/20 bg-white/5 backdrop-blur-md text-white hover:bg-white/20 shadow-xl transition-all hover:-translate-y-1">
+                <a href="#cinema">
+                  <Play className="mr-3 h-5 w-5 fill-white" />
+                  Découvrir
+                </a>
+              </Button>
             </motion.div>
 
             <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-3 md:gap-6 pt-2">
