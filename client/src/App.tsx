@@ -9,8 +9,10 @@ import LandingPage from "@/pages/LandingPage";
 import PrivacyPage from "@/pages/PrivacyPage";
 import TermsPage from "@/pages/TermsPage";
 import LegalPage from "@/pages/LegalPage";
+import CookiesPage from "@/pages/CookiesPage";
 import PublicProxyPage from "@/pages/PublicProxyPage";
 import NotFound from "@/pages/not-found";
+import { CookieBanner } from "@/components/CookieBanner";
 
 function ExternalRedirect({ href }: { href: string }) {
   window.location.href = href;
@@ -27,6 +29,7 @@ function MarketingRouter() {
       <Route path="/confidentialite" component={PrivacyPage} />
       <Route path="/cgv" component={TermsPage} />
       <Route path="/mentions-legales" component={LegalPage} />
+      <Route path="/cookies" component={CookiesPage} />
 
       {/* Public wedding site (proxy to app) */}
       <Route path="/:slug/:page*">
@@ -63,6 +66,7 @@ function App() {
       <TooltipProvider>
         <Toaster />
         <MarketingRouter />
+        <CookieBanner />
       </TooltipProvider>
     </QueryClientProvider>
   );

@@ -769,6 +769,7 @@ export default function LandingPage() {
                 <a href="/confidentialite" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">Confidentialité</a>
                 <a href="/cgv" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">CGV</a>
                 <a href="/mentions-legales" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">Mentions légales</a>
+                <a href="/cookies" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">Cookies</a>
               </div>
             </div>
           </div>

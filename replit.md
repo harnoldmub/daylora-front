@@ -11,13 +11,14 @@ Daylora is a French-language event orchestration platform marketing/landing page
 - **Routing**: wouter
 - **State Management**: @tanstack/react-query
 - **Animation**: framer-motion
+- **Cookie Consent**: Custom module (`client/src/lib/cookie-consent.ts` + `client/src/components/CookieBanner.tsx`)
 - **Structure**:
   - `client/` — Frontend source (index.html, src/)
-  - `client/src/pages/` — Page components (LandingPage, PublicProxyPage, etc.)
-  - `client/src/components/` — Reusable UI components
+  - `client/src/pages/` — Page components (LandingPage, PublicProxyPage, legal pages)
+  - `client/src/components/` — Reusable UI components (CookieBanner, etc.)
   - `client/src/layouts/` — Layout components
   - `client/src/hooks/` — Custom React hooks
-  - `client/src/lib/` — Utility functions
+  - `client/src/lib/` — Utility functions (cookie-consent, queryClient, etc.)
   - `packages/shared/` — Shared types/utilities
   - `attached_assets/` — Static images and assets
   - `dist/public/` — Build output
@@ -32,6 +33,20 @@ Daylora is a French-language event orchestration platform marketing/landing page
 ## Deployment
 - Static deployment serving `dist/public/`
 - Domain: https://daylora.co
+
+## Legal Pages
+- `/confidentialite` — Politique de confidentialité (RGPD)
+- `/cgv` — Conditions Générales de Vente
+- `/mentions-legales` — Mentions légales
+- `/cookies` — Politique de cookies (with consent reset button)
+
+## Cookie Consent System
+- Module: `client/src/lib/cookie-consent.ts`
+- Banner: `client/src/components/CookieBanner.tsx`
+- Categories: necessary (always on), analytics, marketing
+- Storage: localStorage key `daylora_cookie_consent` with versioning
+- Functions: `getConsent()`, `setConsent()`, `hasConsentFor()`, `acceptAll()`, `rejectAll()`, `resetConsent()`, `initConsent()`
+- Scripts are loaded conditionally via `loadAnalyticsScripts()` / `loadMarketingScripts()` (currently empty, ready for future use)
 
 ## Pricing
 - **Gratuit**: 0€ — 1 template (Classique), 30 RSVP max, cagnotte, 6 photos galerie, branding Daylora
@@ -48,7 +63,9 @@ Daylora is a French-language event orchestration platform marketing/landing page
 - sitemap.xml and robots.txt in public directory
 
 ## Recent Changes
-- 2026-02-28: Rebranding from Nocely to Daylora — all references updated, SEO/OG tags, links to app.daylora.app, sitemap.xml & robots.txt created
+- 2026-02-28: Added RGPD cookie consent system (banner + preferences modal + policy page + consent utilities)
+- 2026-02-28: Added legal pages (Confidentialité, CGV, Mentions légales, Cookies)
+- 2026-02-28: Rebranding from Nocely to Daylora — all references updated, SEO/OG tags, links to daylora.app, sitemap.xml & robots.txt created
 - 2026-02-28: Fixed mobile scroll animations — removed opacity:0 from hidden states to prevent invisible content on Safari
 - 2026-02-28: Updated hero image to daytime moody wedding, removed "en France" references, aligned gradient colors with logo
 - 2026-02-25: Updated pricing to 23,99€/mois ou 149€/an, updated features to match product spec, removed FR/EN badge, removed templates section, shortened page
