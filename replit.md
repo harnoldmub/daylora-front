@@ -62,6 +62,10 @@ Daylora is a French-language event orchestration platform marketing/landing page
 - OpenGraph configured with title, description, type, url
 - sitemap.xml and robots.txt in public directory
 
+## Analytics
+- Google Tag Manager: GTM-N4622HDZ (loaded only after analytics consent)
+- GA cookies cleared on consent withdrawal: _ga, _gid, _gat, _gcl_au
+
 ## Recent Changes
 - 2026-02-28: Added RGPD cookie consent system (banner + preferences modal + policy page + consent utilities)
 - 2026-02-28: Added legal pages (Confidentialité, CGV, Mentions légales, Cookies)

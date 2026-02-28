@@ -64,9 +64,35 @@ export default function CookiesPage() {
 
           <h3 className="text-xl font-serif font-bold mt-6 mb-3">Cookies analytics</h3>
           <p>
-            Daylora n'utilise actuellement <strong>aucun cookie analytics</strong>. Si nous en ajoutons à l'avenir,
-            ils ne seront activés qu'après votre consentement explicite.
+            Ces cookies nous permettent de mesurer l'audience du site et de comprendre comment les visiteurs
+            l'utilisent. Ils ne sont activés qu'après votre consentement explicite.
           </p>
+          <div className="overflow-x-auto">
+            <table className="text-sm">
+              <thead>
+                <tr>
+                  <th className="text-left font-bold">Service</th>
+                  <th className="text-left font-bold">Finalité</th>
+                  <th className="text-left font-bold">Durée</th>
+                  <th className="text-left font-bold">Tiers</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Google Tag Manager</td>
+                  <td>Gestion centralisée des tags et mesure d'audience</td>
+                  <td>Variable (selon les tags configurés)</td>
+                  <td>Google LLC</td>
+                </tr>
+                <tr>
+                  <td>Google Analytics (via GTM)</td>
+                  <td>Statistiques de fréquentation et comportement utilisateur</td>
+                  <td>Jusqu'à 2 ans</td>
+                  <td>Google LLC</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           <h3 className="text-xl font-serif font-bold mt-6 mb-3">Cookies marketing</h3>
           <p>
