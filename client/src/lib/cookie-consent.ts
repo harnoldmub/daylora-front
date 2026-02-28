@@ -88,32 +88,7 @@ function applyConsent(preferences: ConsentPreferences): void {
   }
 }
 
-const GTM_ID = "GTM-N4622HDZ";
-
-let gtmLoaded = false;
-
 function loadAnalyticsScripts(): void {
-  if (gtmLoaded) return;
-  gtmLoaded = true;
-
-  const w = window as any;
-  w.dataLayer = w.dataLayer || [];
-  w.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-
-  const script = document.createElement("script");
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
-  document.head.insertBefore(script, document.head.firstChild);
-
-  const noscript = document.createElement("noscript");
-  const iframe = document.createElement("iframe");
-  iframe.src = `https://www.googletagmanager.com/ns.html?id=${GTM_ID}`;
-  iframe.height = "0";
-  iframe.width = "0";
-  iframe.style.display = "none";
-  iframe.style.visibility = "hidden";
-  noscript.appendChild(iframe);
-  document.body.insertBefore(noscript, document.body.firstChild);
 }
 
 function loadMarketingScripts(): void {
