@@ -51,7 +51,8 @@ Daylora is a French-language event orchestration platform marketing/landing page
 ## Pricing
 - **Gratuit**: 0€ — 1 template (Classique), RSVP limité, cagnotte, 6 photos galerie, branding Daylora
 - **Premium**: 149€ paiement unique (12 mois) — offre mise en avant. 3 templates, RSVP illimités, liste cadeaux, page live & blagues, pages perso, 50 photos, sans branding
-- Positionnement : paiement unique, pas d'abonnement récurrent
+- **Premium Mensuel**: 23,99€/mois — mêmes fonctionnalités, résiliable à tout moment
+- Positionnement : paiement unique mis en avant, mensuel disponible en alternative
 
 ## CTAs
 - All CTA buttons redirect to https://daylora.app/onboarding (new tab)

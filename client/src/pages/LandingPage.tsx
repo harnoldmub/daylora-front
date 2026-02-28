@@ -552,67 +552,15 @@ export default function LandingPage() {
             </motion.p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
             <motion.div
               initial="hidden"
               whileInView="show"
               viewport={mobileViewport}
               variants={fadeUp}
-              className="md:col-span-7 p-10 rounded-[2.5rem] bg-gradient-to-br from-[#2b2320] to-[#3D332B] relative overflow-hidden space-y-8 flex flex-col justify-between shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] hover:-translate-y-1 transition-transform"
+              className="p-8 rounded-[2.5rem] bg-white border border-[#E9DFD2] space-y-7 flex flex-col justify-between shadow-sm hover:shadow-lg transition-shadow"
             >
-              <div className="absolute top-4 right-6 flex items-center gap-2">
-                <span className="px-4 py-1.5 bg-primary rounded-full text-[10px] font-bold uppercase tracking-wider text-white flex items-center gap-1.5">
-                  <Star className="h-3 w-3 fill-white" />
-                  Offre recommandée
-                </span>
-              </div>
-
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px]" />
-
-              <div className="space-y-6 relative z-10">
-                <div className="text-primary font-bold tracking-widest uppercase text-xs">Premium — 12 mois</div>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-6xl font-bold text-white font-serif">149€</span>
-                  <span className="text-white/60 text-sm">paiement unique</span>
-                </div>
-                <p className="text-white/70 text-base">Investissez une fois pour organiser votre mariage sereinement. Accès immédiat à toutes les fonctionnalités.</p>
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/15 border border-primary/20">
-                  <BadgeCheck className="h-4 w-4 text-primary" />
-                  <span className="text-primary text-xs font-bold">Paiement unique — aucun prélèvement automatique</span>
-                </div>
-                <ul className="space-y-4">
-                  {[
-                    "3 templates (Classique, Modern, Minimal)",
-                    "RSVP illimités",
-                    "Liste de cadeaux avec réservation",
-                    "Page live et blagues",
-                    "Pages personnalisées",
-                    "50 photos en galerie",
-                    "Sans branding Daylora",
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm text-white/90">
-                      <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <a href={`${APP_URL}/onboarding`} target="_blank" rel="noopener noreferrer" className="block relative z-10">
-                <Button className="w-full rounded-full h-14 bg-primary text-white hover:bg-primary/90 font-bold border-none text-base shadow-[0_10px_30px_rgba(200,169,106,0.3)] transition-all hover:shadow-[0_15px_40px_rgba(200,169,106,0.5)]">
-                  Accéder à Daylora Premium — 149€
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </a>
-            </motion.div>
-
-            <motion.div
-              initial="hidden"
-              whileInView="show"
-              viewport={mobileViewport}
-              variants={fadeUp}
-              className="md:col-span-5 p-10 rounded-[2.5rem] bg-white border border-[#E9DFD2] space-y-8 flex flex-col justify-between shadow-sm hover:shadow-lg transition-shadow"
-            >
-              <div className="space-y-6">
+              <div className="space-y-5">
                 <div className="text-[#7A6B5E] font-bold tracking-widest uppercase text-xs">Gratuit</div>
                 <div className="flex items-baseline gap-1">
                   <span className="text-5xl font-bold font-serif">0€</span>
@@ -643,6 +591,96 @@ export default function LandingPage() {
               <a href={`${APP_URL}/onboarding`} target="_blank" rel="noopener noreferrer" className="block">
                 <Button className="w-full rounded-full h-14 bg-white text-[#2b2320] font-bold hover:bg-[#F3EBE1] border-2 border-[#E6DCCF] text-base transition-all hover:border-primary/40">
                   Démarrer gratuitement
+                </Button>
+              </a>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={mobileViewport}
+              variants={fadeUp}
+              className="p-8 rounded-[2.5rem] bg-gradient-to-br from-[#2b2320] to-[#3D332B] relative overflow-hidden space-y-7 flex flex-col justify-between shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] hover:-translate-y-1 transition-transform md:scale-105 md:z-10"
+            >
+              <div className="absolute top-4 right-6 flex items-center gap-2">
+                <span className="px-4 py-1.5 bg-primary rounded-full text-[10px] font-bold uppercase tracking-wider text-white flex items-center gap-1.5">
+                  <Star className="h-3 w-3 fill-white" />
+                  Meilleur choix
+                </span>
+              </div>
+
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px]" />
+
+              <div className="space-y-5 relative z-10">
+                <div className="text-primary font-bold tracking-widest uppercase text-xs">Premium — 12 mois</div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-5xl font-bold text-white font-serif">149€</span>
+                  <span className="text-white/60 text-sm">paiement unique</span>
+                </div>
+                <p className="text-white/70 text-sm">Investissez une fois pour organiser votre mariage sereinement. Accès immédiat à toutes les fonctionnalités.</p>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/15 border border-primary/20">
+                  <BadgeCheck className="h-3.5 w-3.5 text-primary" />
+                  <span className="text-primary text-[11px] font-bold">Paiement unique — aucun prélèvement</span>
+                </div>
+                <ul className="space-y-3">
+                  {[
+                    "3 templates (Classique, Modern, Minimal)",
+                    "RSVP illimités",
+                    "Liste de cadeaux avec réservation",
+                    "Page live et blagues",
+                    "Pages personnalisées",
+                    "50 photos en galerie",
+                    "Sans branding Daylora",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-sm text-white/90">
+                      <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <a href={`${APP_URL}/onboarding`} target="_blank" rel="noopener noreferrer" className="block relative z-10">
+                <Button className="w-full rounded-full h-14 bg-primary text-white hover:bg-primary/90 font-bold border-none text-base shadow-[0_10px_30px_rgba(200,169,106,0.3)] transition-all hover:shadow-[0_15px_40px_rgba(200,169,106,0.5)]">
+                  Choisir l'annuel — 149€
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </a>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={mobileViewport}
+              variants={fadeUp}
+              className="p-8 rounded-[2.5rem] bg-white border border-[#E9DFD2] space-y-7 flex flex-col justify-between shadow-sm hover:shadow-lg transition-shadow"
+            >
+              <div className="space-y-5">
+                <div className="text-[#7A6B5E] font-bold tracking-widest uppercase text-xs">Premium — Mensuel</div>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-5xl font-bold font-serif">23,99€</span>
+                  <span className="text-[#7A6B5E] text-sm">/mois</span>
+                </div>
+                <p className="text-[#7A6B5E] text-sm">Toutes les fonctionnalités premium, en souplesse mois par mois.</p>
+                <ul className="space-y-3">
+                  {[
+                    "3 templates (Classique, Modern, Minimal)",
+                    "RSVP illimités",
+                    "Liste de cadeaux avec réservation",
+                    "Page live et blagues",
+                    "Pages personnalisées",
+                    "50 photos en galerie",
+                    "Sans branding Daylora",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-sm">
+                      <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
+                      <span className="text-[#5D5147]">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <a href={`${APP_URL}/onboarding`} target="_blank" rel="noopener noreferrer" className="block">
+                <Button className="w-full rounded-full h-14 bg-white text-[#2b2320] font-bold hover:bg-[#F3EBE1] border-2 border-[#E6DCCF] text-base transition-all hover:border-primary/40">
+                  Choisir le mensuel
                 </Button>
               </a>
             </motion.div>

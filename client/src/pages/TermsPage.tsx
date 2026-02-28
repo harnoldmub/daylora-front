@@ -48,7 +48,7 @@ export default function TermsPage() {
             <li>Branding Daylora visible</li>
           </ul>
 
-          <h3 className="text-xl font-serif font-bold mt-6 mb-3">Offre Premium — 149€ (paiement unique, 12 mois d'accès)</h3>
+          <h3 className="text-xl font-serif font-bold mt-6 mb-3">Offre Premium — 149€ paiement unique (12 mois) ou 23,99€/mois</h3>
           <ul>
             <li>3 templates au choix</li>
             <li>RSVP illimités</li>
@@ -68,9 +68,9 @@ export default function TermsPage() {
 
           <h2 className="text-2xl font-serif font-bold mt-10 mb-4">5. Paiement</h2>
           <p>
-            Les paiements sont traités de manière sécurisée par Stripe. L'offre Premium est un paiement
-            unique de 149€ donnant accès à toutes les fonctionnalités pendant 12 mois. Aucun prélèvement
-            automatique ni reconduction tacite.
+            Les paiements sont traités de manière sécurisée par Stripe. L'offre Premium est disponible
+            en paiement unique de 149€ (12 mois d'accès, sans reconduction) ou en abonnement mensuel
+            à 23,99€/mois (résiliable à tout moment depuis l'espace personnel).
           </p>
 
           <h2 className="text-2xl font-serif font-bold mt-10 mb-4">6. Droit de rétractation</h2>
