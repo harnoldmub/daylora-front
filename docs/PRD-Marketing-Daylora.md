@@ -1,24 +1,24 @@
-# Nocely — Document de Spécifications Produit (PRD)
+# Daylora — Document de Spécifications Produit (PRD)
 ## Site Marketing & Vitrine de Conversion
 
 **Version** : 1.0
 **Date** : 18 Février 2026
-**Auteur** : Product Team — Nocely
+**Auteur** : Product Team — Daylora
 **Statut** : Approuvé pour développement
 
 ---
 
 ## 1. Résumé Exécutif
 
-Nocely est une plateforme SaaS tout-en-un permettant aux couples de créer, personnaliser et publier un site de mariage complet avec backoffice. Le produit est développé et opérationnel.
+Daylora est une plateforme SaaS tout-en-un permettant aux couples de créer, personnaliser et publier un site de mariage complet avec backoffice. Le produit est développé et opérationnel.
 
-Ce PRD concerne exclusivement le **site marketing** (nocely.app) dont la mission est de :
+Ce PRD concerne exclusivement le **site marketing** (daylora.app) dont la mission est de :
 - Communiquer la proposition de valeur en moins de 5 secondes
 - Convertir les visiteurs en utilisateurs inscrits
 - Éduquer sur les fonctionnalités clés
 - Générer des upgrades vers le plan Premium
 
-L'application SaaS vit sur app.nocely.app. Le site marketing est le point d'entrée unique du funnel d'acquisition.
+L'application SaaS vit sur app.daylora.app. Le site marketing est le point d'entrée unique du funnel d'acquisition.
 
 ---
 
@@ -88,7 +88,7 @@ Le marché français est **sous-pénétré** par rapport aux US/UK, avec aucun a
 2. **Évaluation** (< 60s) → Hero + templates preview
 3. **Réassurance** → Témoignages + FAQ
 4. **Décision** → Pricing clair + CTA "Commencer gratuitement"
-5. **Activation** → Redirect vers app.nocely.app/signup
+5. **Activation** → Redirect vers app.daylora.app/signup
 6. **Upgrade** → Après création du site, in-app
 
 ---
@@ -97,7 +97,7 @@ Le marché français est **sous-pénétré** par rapport aux US/UK, avec aucun a
 
 ### 4.1 Cartographie
 
-| Critère | WithJoy | Zola | The Knot | Wix Wedding | SayYes | **Nocely** |
+| Critère | WithJoy | Zola | The Knot | Wix Wedding | SayYes | **Daylora** |
 |---|---|---|---|---|---|---|
 | **Marché** | US | US | US | Global | FR | **FR + International** |
 | **Langue FR** | Non | Non | Non | Partiel | Oui | **Oui (natif)** |
@@ -118,9 +118,9 @@ Le marché français est **sous-pénétré** par rapport aux US/UK, avec aucun a
 - **Wix Wedding** : Templates génériques non spécialisés mariage. Aucune fonctionnalité RSVP/cagnotte native. Courbe d'apprentissage élevée.
 - **SayYes** : Seul concurrent FR direct. Design correct mais pas premium. Pas de live experience, pas de QR codes. Pricing élevé sans justification visuelle.
 
-### 4.3 Avantage concurrentiel Nocely
+### 4.3 Avantage concurrentiel Daylora
 
-Nocely est le **seul acteur francophone** combinant :
+Daylora est le **seul acteur francophone** combinant :
 1. Design premium (templates créés par designers)
 2. RSVP intelligent avec QR codes
 3. Cagnotte sécurisée Stripe
@@ -156,7 +156,7 @@ Déclinaisons marketing :
 | M7 | Footer avec liens légaux | Conformité RGPD |
 | M8 | Navigation fixe avec CTA | Conversion permanente |
 | M9 | Responsive design (mobile-first) | 70%+ du trafic est mobile |
-| M10 | Redirect vers app.nocely.app | Funnel d'activation |
+| M10 | Redirect vers app.daylora.app | Funnel d'activation |
 | M11 | Section témoignages | Social proof |
 | M12 | Bandeau stats (social proof) | Crédibilité |
 
@@ -166,7 +166,7 @@ Déclinaisons marketing :
 |---|---|---|
 | S1 | Preview templates interactive | Permet de "se projeter" avant inscription |
 | S2 | Animation scroll cinématique | Engagement + temps passé sur page |
-| S3 | Section comparatif "Avant / Après Nocely" | Problème → Solution narrative |
+| S3 | Section comparatif "Avant / Après Daylora" | Problème → Solution narrative |
 | S4 | Micro-interactions et hover effects | Perception premium |
 | S5 | Badge de confiance (Stripe, RGPD, SSL) | Réassurance sécurité |
 
@@ -184,7 +184,7 @@ Déclinaisons marketing :
 
 | ID | Fonctionnalité | Raison |
 |---|---|---|
-| W1 | Création de compte sur le site marketing | Vit sur app.nocely.app |
+| W1 | Création de compte sur le site marketing | Vit sur app.daylora.app |
 | W2 | Backoffice ou dashboard | Produit SaaS séparé |
 | W3 | Paiement / checkout | Géré in-app |
 | W4 | Gestion des invités | Fonctionnalité produit |
@@ -197,10 +197,10 @@ Déclinaisons marketing :
 
 | # | User Story | Critère d'acceptation |
 |---|---|---|
-| US1 | En tant que visiteur, je veux comprendre ce que fait Nocely en < 5 secondes pour décider si je continue. | Hero + sous-titre lisibles, message clair. |
+| US1 | En tant que visiteur, je veux comprendre ce que fait Daylora en < 5 secondes pour décider si je continue. | Hero + sous-titre lisibles, message clair. |
 | US2 | En tant que visiteur, je veux voir un CTA visible sans scroller pour pouvoir m'inscrire immédiatement. | CTA "Commencer gratuitement" above the fold. |
 | US3 | En tant que visiteur, je veux voir le pricing avant de m'inscrire pour savoir si c'est dans mon budget. | Section pricing accessible en 1 clic depuis la nav. |
-| US4 | En tant que visiteur, je veux cliquer sur "Commencer" et être redirigé vers l'app pour créer mon compte. | Redirect vers app.nocely.app/app/signup. |
+| US4 | En tant que visiteur, je veux cliquer sur "Commencer" et être redirigé vers l'app pour créer mon compte. | Redirect vers app.daylora.app/app/signup. |
 | US5 | En tant que visiteur mobile, je veux une expérience fluide pour ne pas quitter la page. | Responsive, touch-friendly, < 3s de chargement. |
 
 ### Compréhension
@@ -227,11 +227,11 @@ Déclinaisons marketing :
 
 | # | User Story | Critère d'acceptation |
 |---|---|---|
-| US16 | En tant que visiteur, je veux une expérience visuelle premium pour associer Nocely à la qualité. | Animations fluides, design soigné, images HD. |
+| US16 | En tant que visiteur, je veux une expérience visuelle premium pour associer Daylora à la qualité. | Animations fluides, design soigné, images HD. |
 | US17 | En tant que visiteur, je veux pouvoir naviguer facilement entre les sections. | Nav fixe avec ancres smooth scroll. |
-| US18 | En tant que visiteur, je veux accéder à mon compte si j'en ai déjà un. | Bouton "Connexion" dans la nav → app.nocely.app/app/login. |
+| US18 | En tant que visiteur, je veux accéder à mon compte si j'en ai déjà un. | Bouton "Connexion" dans la nav → app.daylora.app/app/login. |
 | US19 | En tant que visiteur, je veux voir les templates disponibles pour me projeter. | Section templates avec aperçu visuel. |
-| US20 | En tant que visiteur sur Google, je veux que la page soit bien référencée pour trouver Nocely facilement. | Meta tags, title, description optimisés. |
+| US20 | En tant que visiteur sur Google, je veux que la page soit bien référencée pour trouver Daylora facilement. | Meta tags, title, description optimisés. |
 
 ---
 
@@ -427,7 +427,7 @@ Déclinaisons marketing :
 │     réuni en un seul endroit                             │
 │     (gradient doré sur ligne 2)                          │
 │                                                          │
-│  Fini les dizaines d'outils. Nocely centralise...        │
+│  Fini les dizaines d'outils. Daylora centralise...        │
 │                                                          │
 │  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐        │
 │  │ 🪄          │ │ 👥          │ │ 📱          │        │
@@ -628,7 +628,7 @@ Déclinaisons marketing :
 ┌──────────────────────────────────────────────────────────┐
 │  [Fond sombre : #2b2320]                                 │
 │                                                          │
-│  ♥ Nocely                    Produit     Légal           │
+│  ♥ Daylora                    Produit     Légal           │
 │  WEDDING PLATFORM            Features    CGU             │
 │                              Pricing     Confidentialité │
 │  Votre mariage mérite        FAQ         Mentions légales│
@@ -636,7 +636,7 @@ Déclinaisons marketing :
 │                                                          │
 │  ─────────────────────────────────────────────────        │
 │                                                          │
-│  © 2026 Nocely. Tous droits réservés.                    │
+│  © 2026 Daylora. Tous droits réservés.                    │
 │  Fait avec ♥ à Paris                                     │
 │                                                          │
 └──────────────────────────────────────────────────────────┘
@@ -645,7 +645,7 @@ Déclinaisons marketing :
 ### 11.9 Flow d'inscription
 
 ```
-  Visiteur arrive sur nocely.app
+  Visiteur arrive sur daylora.app
            │
            ▼
   ┌─────────────────┐
@@ -659,14 +659,14 @@ Déclinaisons marketing :
            ▼
   ┌─────────────────────────┐
   │  Redirect 302           │
-  │  → app.nocely.app       │
+  │  → app.daylora.app       │
   │    /app/signup           │
   └────────┬────────────────┘
            │
            ▼
   ┌─────────────────────────┐
   │  Formulaire inscription │
-  │  (sur app.nocely.app)   │
+  │  (sur app.daylora.app)   │
   └────────┬────────────────┘
            │
            ▼
@@ -690,7 +690,7 @@ Déclinaisons marketing :
 |---|---|
 | **Stack** | React 18 + TypeScript + Vite 5 + Tailwind CSS v3 |
 | **Hébergement** | Déploiement statique (dist/public/) |
-| **Domaine** | nocely.app (marketing) / app.nocely.app (SaaS) |
+| **Domaine** | daylora.app (marketing) / app.daylora.app (SaaS) |
 | **Performance** | LCP < 2.5s, FID < 100ms, CLS < 0.1 |
 | **SEO** | Meta tags, Open Graph, sitemap.xml, robots.txt |
 | **Accessibilité** | WCAG 2.1 AA minimum |

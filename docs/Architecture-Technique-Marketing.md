@@ -1,4 +1,4 @@
-# Nocely Marketing — Architecture Technique
+# Daylora Marketing — Architecture Technique
 ## Document d'Architecture Production
 
 **Version** : 1.0
@@ -247,25 +247,25 @@ API responses (si applicable) :
 // lib/seo.ts
 export const SEO_CONFIG = {
   default: {
-    title: "Nocely — Créez votre site de mariage en 3 minutes",
+    title: "Daylora — Créez votre site de mariage en 3 minutes",
     description: "La plateforme tout-en-un pour créer un site de mariage élégant, gérer vos invités, envoyer des invitations QR code et recevoir des contributions. Gratuit pour démarrer.",
-    keywords: "site mariage, mariage en ligne, RSVP mariage, cagnotte mariage, invitation mariage, site de mariage gratuit, nocely",
-    canonical: "https://nocely.app",
+    keywords: "site mariage, mariage en ligne, RSVP mariage, cagnotte mariage, invitation mariage, site de mariage gratuit, daylora",
+    canonical: "https://daylora.app",
     locale: "fr_FR",
-    siteName: "Nocely",
+    siteName: "Daylora",
     type: "website",
   },
   openGraph: {
-    title: "Nocely — Votre mariage mérite le meilleur",
+    title: "Daylora — Votre mariage mérite le meilleur",
     description: "Créez un site de mariage premium en 3 minutes. RSVP intelligent, cagnotte Stripe, invitations QR code et expérience live.",
-    image: "https://nocely.app/og/og-default.png", // 1200x630
-    imageAlt: "Nocely — Plateforme de mariage tout-en-un",
-    url: "https://nocely.app",
+    image: "https://daylora.app/og/og-default.png", // 1200x630
+    imageAlt: "Daylora — Plateforme de mariage tout-en-un",
+    url: "https://daylora.app",
   },
   twitter: {
     card: "summary_large_image",
-    site: "@nocely_app",
-    creator: "@nocely_app",
+    site: "@daylora_app",
+    creator: "@daylora_app",
   },
 };
 ```
@@ -324,8 +324,8 @@ export function WebsiteSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Nocely",
-    "url": "https://nocely.app",
+    "name": "Daylora",
+    "url": "https://daylora.app",
     "description": "Plateforme de création de sites de mariage tout-en-un",
     "applicationCategory": "LifestyleApplication",
     "operatingSystem": "Web",
@@ -391,12 +391,12 @@ export function OrganizationSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Nocely",
-    "url": "https://nocely.app",
-    "logo": "https://nocely.app/logo.png",
+    "name": "Daylora",
+    "url": "https://daylora.app",
+    "logo": "https://daylora.app/logo.png",
     "sameAs": [
-      "https://instagram.com/nocely_app",
-      "https://twitter.com/nocely_app"
+      "https://instagram.com/daylora_app",
+      "https://twitter.com/daylora_app"
     ],
     "contactPoint": {
       "@type": "ContactPoint",
@@ -422,7 +422,7 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://nocely.app/sitemap.xml
+Sitemap: https://daylora.app/sitemap.xml
 ```
 
 **sitemap.xml** :
@@ -430,7 +430,7 @@ Sitemap: https://nocely.app/sitemap.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemedia.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://nocely.app/</loc>
+    <loc>https://daylora.app/</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -468,33 +468,33 @@ export default defineConfig({
 ### 4.1 Structure des routes
 
 ```
-nocely.app/                    → Landing Page (marketing)
-nocely.app/#features           → Ancre fonctionnalités
-nocely.app/#cinema             → Ancre visite guidée
-nocely.app/#testimonials       → Ancre témoignages
-nocely.app/#pricing            → Ancre tarifs
-nocely.app/#faq                → Ancre FAQ
+daylora.app/                    → Landing Page (marketing)
+daylora.app/#features           → Ancre fonctionnalités
+daylora.app/#cinema             → Ancre visite guidée
+daylora.app/#testimonials       → Ancre témoignages
+daylora.app/#pricing            → Ancre tarifs
+daylora.app/#faq                → Ancre FAQ
 
-nocely.app/login               → Redirect → app.nocely.app/app/login
-nocely.app/signup              → Redirect → app.nocely.app/app/signup
+daylora.app/login               → Redirect → app.daylora.app/app/login
+daylora.app/signup              → Redirect → app.daylora.app/app/signup
 
-nocely.app/:slug               → Proxy public wedding site (SSR via app backend)
+daylora.app/:slug               → Proxy public wedding site (SSR via app backend)
 
 --- V2 ---
-nocely.app/blog                → Blog SEO
-nocely.app/blog/:slug          → Article
-nocely.app/comparatif          → Page comparatif concurrents
-nocely.app/templates           → Galerie templates
-nocely.app/pricing             → Page pricing détaillée
-nocely.app/a-propos            → Page about
-nocely.app/contact             → Page contact
+daylora.app/blog                → Blog SEO
+daylora.app/blog/:slug          → Article
+daylora.app/comparatif          → Page comparatif concurrents
+daylora.app/templates           → Galerie templates
+daylora.app/pricing             → Page pricing détaillée
+daylora.app/a-propos            → Page about
+daylora.app/contact             → Page contact
 ```
 
 ### 4.2 Gestion des redirections CTA
 
 ```typescript
 // lib/cta.ts
-const APP_BASE = "https://app.nocely.app";
+const APP_BASE = "https://app.daylora.app";
 
 export const CTA = {
   signup: `${APP_BASE}/app/signup`,
@@ -719,8 +719,8 @@ function App() {
 ```tsx
 // Preload critical assets dans index.html
 <link rel="preload" href="/images/wedding-hero.webp" as="image" type="image/webp">
-<link rel="preconnect" href="https://app.nocely.app">
-<link rel="dns-prefetch" href="https://app.nocely.app">
+<link rel="preconnect" href="https://app.daylora.app">
+<link rel="dns-prefetch" href="https://app.daylora.app">
 ```
 
 ---
@@ -1027,8 +1027,8 @@ function Hero() {
 
 ```bash
 # .env.production
-VITE_APP_BASE_URL=https://app.nocely.app
-VITE_SITE_URL=https://nocely.app
+VITE_APP_BASE_URL=https://app.daylora.app
+VITE_SITE_URL=https://daylora.app
 VITE_POSTHOG_KEY=phc_xxxxxxxxxxxx
 VITE_POSTHOG_HOST=https://eu.posthog.com
 VITE_ENV=production
@@ -1036,7 +1036,7 @@ VITE_ENV=production
 
 ```bash
 # .env.development
-VITE_APP_BASE_URL=https://app.nocely.app
+VITE_APP_BASE_URL=https://app.daylora.app
 VITE_SITE_URL=http://localhost:5000
 VITE_ENV=development
 ```
@@ -1069,7 +1069,7 @@ VITE_ENV=development
 
 ### Conversion
 - [ ] CTA visible above the fold
-- [ ] Tous les CTA redirigent vers app.nocely.app
+- [ ] Tous les CTA redirigent vers app.daylora.app
 - [ ] UTM parameters sur chaque CTA
 - [ ] Analytics events configurés
 - [ ] Scroll depth tracking

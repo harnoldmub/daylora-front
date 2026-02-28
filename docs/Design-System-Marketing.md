@@ -1,4 +1,4 @@
-# Nocely — Design System Marketing
+# Daylora — Design System Marketing
 ## Guide Complet de Design & Composants
 
 **Version** : 1.0
@@ -272,7 +272,7 @@ export function Hero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-            <a href="https://app.nocely.app/app/signup?utm_source=marketing&utm_content=hero_primary">
+            <a href="https://app.daylora.app/app/signup?utm_source=marketing&utm_content=hero_primary">
               <button className="group flex items-center gap-3 px-8 h-14
                 bg-ink text-white rounded-full font-semibold text-base
                 shadow-hero hover:bg-black hover:-translate-y-0.5
@@ -660,7 +660,7 @@ export function PricingCard({ name, price, period, description, features, cta, c
   <PricingCard
     name="Gratuit"
     price="0 €"
-    description="Parfait pour découvrir Nocely"
+    description="Parfait pour découvrir Daylora"
     features={[
       { text: 'Site de mariage basique', included: true },
       { text: '1 template', included: true },
@@ -673,7 +673,7 @@ export function PricingCard({ name, price, period, description, features, cta, c
       { text: 'Analytics avancés', included: false },
     ]}
     cta="Commencer gratuitement"
-    ctaHref="https://app.nocely.app/app/signup?utm_content=pricing_free"
+    ctaHref="https://app.daylora.app/app/signup?utm_content=pricing_free"
   />
   <PricingCard
     name="Premium"
@@ -693,7 +693,7 @@ export function PricingCard({ name, price, period, description, features, cta, c
       { text: 'Analytics avancés', included: true },
     ]}
     cta="Passer Premium"
-    ctaHref="https://app.nocely.app/app/signup?utm_content=pricing_premium"
+    ctaHref="https://app.daylora.app/app/signup?utm_content=pricing_premium"
   />
 </div>
 ```
@@ -793,7 +793,7 @@ export function Footer() {
                 <Heart className="h-5 w-5 text-white fill-white" />
               </div>
               <div className="flex flex-col -space-y-1">
-                <span className="text-xl font-serif font-bold text-white">Nocely</span>
+                <span className="text-xl font-serif font-bold text-white">Daylora</span>
                 <span className="text-overline text-gold/60" style={{ fontSize: '7px' }}>
                   Wedding platform
                 </span>
@@ -825,7 +825,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-white/10
           flex flex-col md:flex-row items-center justify-between gap-4 text-caption text-white/30">
-          <span>&copy; {new Date().getFullYear()} Nocely. Tous droits réservés.</span>
+          <span>&copy; {new Date().getFullYear()} Daylora. Tous droits réservés.</span>
           <span className="flex items-center gap-1.5">
             Fait avec <Heart className="h-3 w-3 text-gold fill-gold" /> à Paris
           </span>
@@ -879,7 +879,7 @@ export function Navbar() {
           </div>
           <div className="flex flex-col -space-y-1">
             <span className="text-xl md:text-2xl font-serif font-bold tracking-tight text-ink">
-              Nocely
+              Daylora
             </span>
             <span className="text-overline text-gold/60 ml-0.5" style={{ fontSize: '7px' }}>
               Wedding platform
@@ -901,11 +901,11 @@ export function Navbar() {
 
         {/* Actions */}
         <div className="flex items-center gap-3 md:gap-6">
-          <a href="https://app.nocely.app/app/login"
+          <a href="https://app.daylora.app/app/login"
             className="hidden md:inline-flex text-overline text-muted hover:text-ink transition-colors">
             Connexion
           </a>
-          <a href="https://app.nocely.app/app/signup?utm_content=nav_button">
+          <a href="https://app.daylora.app/app/signup?utm_content=nav_button">
             <button className="rounded-full px-5 md:px-8 h-10 md:h-12
               bg-ink text-white hover:bg-black
               transition-all shadow-card hover:shadow-elevated
@@ -1240,7 +1240,7 @@ type Theme = 'light' | 'dark' | 'system';
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window === 'undefined') return 'light';
-    return (localStorage.getItem('nocely-theme') as Theme) || 'light';
+    return (localStorage.getItem('daylora-theme') as Theme) || 'light';
   });
 
   useEffect(() => {
@@ -1251,7 +1251,7 @@ export function useTheme() {
     } else {
       root.classList.toggle('dark', theme === 'dark');
     }
-    localStorage.setItem('nocely-theme', theme);
+    localStorage.setItem('daylora-theme', theme);
   }, [theme]);
 
   return { theme, setTheme };

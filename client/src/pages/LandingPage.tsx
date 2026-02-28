@@ -25,7 +25,7 @@ import {
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 
-const APP_URL = "https://app.nocely.app";
+const APP_URL = "https://app.daylora.app";
 
 const mobileViewport = { once: true, margin: "200px 0px 0px 0px", amount: 0 as const };
 
@@ -79,7 +79,7 @@ const TESTIMONIALS = [
   {
     name: "Sophie & Marc",
     location: "Paris, France",
-    quote: "Nocely a transformé notre mariage. Nos invités étaient bluffés par la qualité du site. La cagnotte en ligne a simplifié tout le processus.",
+    quote: "Daylora a transformé notre mariage. Nos invités étaient bluffés par la qualité du site. La cagnotte en ligne a simplifié tout le processus.",
     image: "/images/testimonial-1.jpg",
     rating: 5,
   },
@@ -150,7 +150,7 @@ export default function LandingPage() {
       <nav className="fixed top-0 w-full z-50 px-4 md:px-6 py-3">
         <div className="max-w-7xl mx-auto rounded-full px-5 md:px-8 py-3 flex items-center justify-between bg-white/80 backdrop-blur-xl border border-[#E9DFD2]/80 shadow-[0_4px_30px_rgba(0,0,0,0.06)]">
           <a href="/" className="flex items-center group cursor-pointer">
-            <img src="/images/logo.png" alt="Nocely" className="h-10 md:h-12 w-auto transition-all group-hover:scale-105" />
+            <img src="/images/logo.png" alt="Daylora" className="h-10 md:h-12 w-auto transition-all group-hover:scale-105" />
           </a>
 
           <div className="hidden lg:flex items-center gap-8 text-sm font-medium text-[#7A6B5E]">
@@ -485,7 +485,7 @@ export default function LandingPage() {
               Témoignages
             </motion.div>
             <motion.h2 variants={fadeUp} className="text-4xl md:text-6xl font-serif font-bold leading-tight">
-              Ils ont dit <span className="text-gradient italic">oui</span> à Nocely
+              Ils ont dit <span className="text-gradient italic">oui</span> à Daylora
             </motion.h2>
             <motion.p variants={fadeUp} className="text-lg text-[#7A6B5E] max-w-xl mx-auto">
               Des couples comme vous nous font confiance pour leur plus beau jour.
@@ -562,14 +562,14 @@ export default function LandingPage() {
                 <div className="flex items-baseline gap-1">
                   <span className="text-6xl font-bold font-serif">0€</span>
                 </div>
-                <p className="text-[#7A6B5E]">Parfait pour essayer Nocely et créer votre premier site.</p>
+                <p className="text-[#7A6B5E]">Parfait pour essayer Daylora et créer votre premier site.</p>
                 <ul className="space-y-4">
                   {[
                     { text: "1 template (Classique)", included: true },
                     { text: "30 RSVP maximum", included: true },
                     { text: "Cagnotte en ligne", included: true },
                     { text: "6 photos en galerie", included: true },
-                    { text: "Branding Nocely", included: true },
+                    { text: "Branding Daylora", included: true },
                     { text: "Liste cadeaux", included: false },
                     { text: "Page live & blagues", included: false },
                     { text: "Pages personnalisées", included: false },
@@ -621,7 +621,7 @@ export default function LandingPage() {
                     "Page live et blagues",
                     "Pages personnalisées",
                     "50 photos en galerie",
-                    "Sans branding Nocely",
+                    "Sans branding Daylora",
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm text-white/90">
                       <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
@@ -713,7 +713,7 @@ export default function LandingPage() {
               <span className="text-primary italic">quelque chose de beau ?</span>
             </motion.h2>
             <motion.p variants={fadeUp} className="text-xl text-white/80 max-w-xl mx-auto leading-relaxed">
-              Rejoignez les couples qui ont choisi Nocely pour leur plus beau jour.
+              Rejoignez les couples qui ont choisi Daylora pour leur plus beau jour.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <a href={`${APP_URL}/onboarding`} target="_blank" rel="noopener noreferrer">
@@ -739,7 +739,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div className="space-y-4">
               <a href="/" className="flex items-center">
-                <img src="/images/logo.png" alt="Nocely" className="h-10 w-auto" />
+                <img src="/images/logo.png" alt="Daylora" className="h-10 w-auto" />
               </a>
               <p className="text-sm text-[#7A6B5E] leading-relaxed">
                 La nouvelle génération de sites de mariage.
@@ -759,7 +759,7 @@ export default function LandingPage() {
               <h4 className="text-xs font-bold uppercase tracking-widest text-[#7A6B5E]">Support</h4>
               <div className="space-y-3">
                 <a href="#faq" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">FAQ</a>
-                <a href="mailto:contact@nocely.app" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">Contact</a>
+                <a href="mailto:contact@daylora.co" className="block text-sm text-[#5D5147] hover:text-primary transition-colors">Contact</a>
               </div>
             </div>
 
@@ -775,7 +775,7 @@ export default function LandingPage() {
 
           <div className="pt-8 border-t border-[#E6DCCF] flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-[#B6A796] text-xs">
-              © 2026 Nocely. Tous droits réservés.
+              © 2026 Daylora. Tous droits réservés.
             </div>
             <div className="flex items-center gap-2 text-[#B6A796] text-xs">
               <span>Fait avec</span>

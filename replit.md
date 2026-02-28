@@ -1,7 +1,7 @@
-# Nocely Marketing
+# Daylora Marketing
 
 ## Overview
-Nocely is a French-language wedding website platform marketing/landing page. This is a frontend-only Vite + React + TypeScript project that serves as the public-facing marketing site.
+Daylora is a French-language event orchestration platform marketing/landing page. This is a frontend-only Vite + React + TypeScript project that serves as the public-facing marketing site at daylora.co.
 
 ## Project Architecture
 - **Framework**: React 18 with TypeScript
@@ -21,6 +21,8 @@ Nocely is a French-language wedding website platform marketing/landing page. Thi
   - `packages/shared/` — Shared types/utilities
   - `attached_assets/` — Static images and assets
   - `dist/public/` — Build output
+  - `client/public/sitemap.xml` — SEO sitemap
+  - `client/public/robots.txt` — Robots configuration
 
 ## Development
 - **Dev server**: `npm run dev` (Vite on port 5000, host 0.0.0.0)
@@ -29,15 +31,25 @@ Nocely is a French-language wedding website platform marketing/landing page. Thi
 
 ## Deployment
 - Static deployment serving `dist/public/`
+- Domain: https://daylora.co
 
 ## Pricing
-- **Gratuit**: 0€ — 1 template (Classique), 30 RSVP max, cagnotte, 6 photos galerie, branding Nocely
+- **Gratuit**: 0€ — 1 template (Classique), 30 RSVP max, cagnotte, 6 photos galerie, branding Daylora
 - **Premium**: 23,99€/mois ou 149€/an — 3 templates, RSVP illimités, liste cadeaux, page live & blagues, pages perso, 50 photos, sans branding
 
 ## CTAs
-- All CTA buttons redirect to https://app.nocely.app/onboarding (new tab)
-- Connexion button redirects to https://app.nocely.app/login (new tab)
+- All CTA buttons redirect to https://app.daylora.app/onboarding (new tab)
+- Connexion button redirects to https://app.daylora.app/login (new tab)
+- Contact: contact@daylora.co
+
+## SEO
+- Canonical URL: https://daylora.co
+- OpenGraph configured with title, description, type, url
+- sitemap.xml and robots.txt in public directory
 
 ## Recent Changes
+- 2026-02-28: Rebranding from Nocely to Daylora — all references updated, SEO/OG tags, links to app.daylora.app, sitemap.xml & robots.txt created
+- 2026-02-28: Fixed mobile scroll animations — removed opacity:0 from hidden states to prevent invisible content on Safari
+- 2026-02-28: Updated hero image to daytime moody wedding, removed "en France" references, aligned gradient colors with logo
 - 2026-02-25: Updated pricing to 23,99€/mois ou 149€/an, updated features to match product spec, removed FR/EN badge, removed templates section, shortened page
 - 2026-02-18: Configured Vite for Replit environment (host 0.0.0.0, port 5000, allowedHosts: true)
