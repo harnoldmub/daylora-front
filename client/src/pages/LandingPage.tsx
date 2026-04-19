@@ -58,8 +58,8 @@ const FR = {
       titleLine1: "Votre mariage",
       titleLine2: "mérite le meilleur",
       description: "Créez votre site de mariage, gérez vos invités et recevez de l'argent — en quelques minutes.",
-      primaryCta: "Accéder à Daylora Premium — 149€",
-      secondaryCta: "Commencer gratuitement",
+      primaryCta: "Commencer gratuitement",
+      secondaryCta: "Découvrir",
       highlights: ["100% gratuit pour démarrer", "Site prêt en 3 min", "Paiements sécurisés"],
     },
     stats: [
