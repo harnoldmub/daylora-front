@@ -74,7 +74,7 @@ const FR = {
       titleLine2: "besoin pour votre mariage",
       description: "De la création du site à la gestion des invités, Daylora centralise tout en un seul endroit.",
       items: [
-        "Templates premium",
+        "Modèles Éditorial & Faire-part",
         "Performance",
         "Galerie photos",
         "Design personnalisable",
@@ -89,7 +89,7 @@ const FR = {
       description: "En quelques étapes simples, votre mariage prend vie en ligne.",
       steps: [
         { kicker: "Démarrer", title: "Créez votre espace", description: "Répondez à quelques questions simples. Votre site de mariage personnalisé est prêt en 1 minute." },
-        { kicker: "Personnaliser", title: "Personnalisez à votre image", description: "Choisissez vos couleurs, vos polices, vos photos. Daylora s'adapte à votre vision." },
+        { kicker: "Personnaliser", title: "Personnalisez à votre image", description: "Choisissez votre modèle, vos couleurs et vos photos, puis modifiez les textes directement sur la page." },
         { kicker: "Invitations", title: "Invitez vos proches", description: "Envoyez des invitations personnalisées avec un lien unique. Vos invités confirment en un clic." },
         { kicker: "Publier", title: "Publiez et profitez", description: "Votre site est en ligne. Gérez les RSVP, la cagnotte et bien plus depuis votre tableau de bord." },
       ],
@@ -100,9 +100,9 @@ const FR = {
       titleLine2: "pour un mariage réussi",
       description: "Chaque fonctionnalité a été pensée pour simplifier l'organisation de votre mariage et épater vos invités.",
       cards: [
-        { id: "templates", eyebrow: "Templates", title: "Des modèles qui donnent envie", description: "Choisissez parmi nos templates soigneusement designés, puis personnalisez chaque détail selon vos envies.", bullets: ["3 templates premium", "Couleurs et polices personnalisables", "Aperçu en temps réel", "Mobile-first"] },
-        { id: "guests", eyebrow: "Invités", title: "Gérez vos invités sans effort", description: "Importez vos invités, envoyez des invitations et suivez les RSVP en temps réel depuis votre tableau de bord.", bullets: ["RSVP en un clic", "Import de contacts", "Export de la liste", "Régimes alimentaires"] },
-        { id: "invitations", eyebrow: "Invitations", title: "Des invitations digitales élégantes", description: "Chaque invité reçoit une invitation personnalisée avec son nom, un QR code et un bouton de confirmation.", bullets: ["Invitation nominative", "QR code unique", "Page RSVP dédiée", "Rappels automatiques"] },
+        { id: "templates", eyebrow: "Modèles", title: "Deux modèles signés, à vos couleurs", description: "Éditorial (grand portrait, prénoms manuscrits) ou Faire-part (bandeaux colorés, médaillon dentelle). Textes et photos se modifient directement sur la page.", bullets: ["Modèles Éditorial et Faire-part", "Couleurs, polices et boutons au choix", "Édition directement sur la page", "Une page par célébration"] },
+        { id: "guests", eyebrow: "Invités", title: "Gérez vos invités sans effort", description: "Importez vos invités, envoyez des invitations et suivez les RSVP en temps réel depuis votre tableau de bord.", bullets: ["RSVP en un clic", "Une liste par marié(e)", "Suivi par célébration", "Export de la liste"] },
+        { id: "invitations", eyebrow: "Invitations", title: "Des invitations digitales élégantes", description: "Chaque invité reçoit une invitation personnalisée avec son nom, un QR code et un bouton de confirmation.", bullets: ["Invitation nominative", "Une carte par célébration", "QR code unique", "PDF à télécharger"] },
         { id: "gifts", eyebrow: "Liste de cadeaux", title: "Liste de cadeaux et cagnotte", description: "Proposez une liste de cadeaux en ligne ou recevez des contributions directement via la cagnotte sécurisée.", bullets: ["Cagnotte sécurisée", "Messages accompagnants", "Paiements Stripe", "Retraits simplifiés"] },
         { id: "checkin", eyebrow: "Check-in", title: "Check-in le jour J", description: "Scannez les QR codes de vos invités à l'entrée pour un check-in rapide et sans accroc.", bullets: ["QR codes uniques", "Check-in mobile", "Liste en temps réel", "Export PDF"] },
         { id: "support", eyebrow: "Support", title: "Un support humain et réactif", description: "Notre équipe est disponible pour vous accompagner à chaque étape de la préparation de votre mariage.", bullets: ["Chat en direct", "Réponse en moins d'1h", "Guides et tutoriels", "Communauté privée"] },
@@ -125,7 +125,7 @@ const FR = {
         price: "0€",
         description: "Pour découvrir Daylora sans engagement.",
         features: [
-          { text: "1 template (Classique)", included: true },
+          { text: "Modèles Éditorial et Faire-part", included: true },
           { text: "RSVP limité (30 invités)", included: true },
           { text: "Cagnotte", included: true },
           { text: "6 photos galerie", included: true },
@@ -141,7 +141,7 @@ const FR = {
         priceSuffix: "paiement unique",
         description: "Investissez une fois pour organiser votre mariage sereinement. Accès immédiat à toutes les fonctionnalités.",
         chip: "Accès 12 mois · Paiement unique",
-        features: ["3 templates premium", "RSVP illimités", "Liste de cadeaux", "Page live & blagues", "50 photos galerie", "Sans branding Daylora", "Pages personnalisées"],
+        features: ["Personnalisation avancée", "RSVP illimités", "Liste de cadeaux", "Page live & blagues", "50 photos galerie", "Sans branding Daylora", "Pages personnalisées"],
         cta: "Choisir l'annuel — 149€",
       },
       monthlyPlan: {
@@ -149,7 +149,7 @@ const FR = {
         price: "23,99€",
         priceSuffix: "/mois",
         description: "Les mêmes fonctionnalités premium, résiliable à tout moment.",
-        features: ["3 templates premium", "RSVP illimités", "Liste de cadeaux", "Page live & blagues", "50 photos galerie", "Sans branding Daylora"],
+        features: ["Personnalisation avancée", "RSVP illimités", "Liste de cadeaux", "Page live & blagues", "50 photos galerie", "Sans branding Daylora"],
         cta: "Choisir le mensuel",
       },
       reassurances: ["Paiement sécurisé", "Résiliable à tout moment", "Support réactif", "Accès immédiat"],
